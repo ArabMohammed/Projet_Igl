@@ -1,0 +1,100 @@
+.box-container-ad-details {
+    margin: 9rem 6rem;
+    justify-content: center;
+}
+
+.bottom-ad-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 30rem);
+    gap: 9%;
+}
+
+.box-container-ad-details h2{
+    padding-bottom: .4rem;
+    font-size: 2rem;
+}
+
+.span {
+    color: #CD6602;
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.span2 {
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+}
+
+hr {
+    border: .1px solid #CD6602;   
+}
+
+.images-ad-details {
+    margin-bottom: 2rem;
+}
+
+.description-ad-details h3 {
+    color: #CD6602;
+    font-size: 1.5rem;
+}
+
+.description-ad-details {
+    margin-bottom: 3rem;
+    border: 2px solid #CD6602;
+    padding: 2rem 1.5rem;
+}
+
+.description-ad-details p {
+    line-height: 20px;
+}
+
+.bref-resume-ad-details {
+    margin-bottom: 3rem;
+    border: 2px solid #CD6602;
+    padding: 2rem 1.5rem;
+}
+
+.bref-resume-ad-details h3 {
+    color: #CD6602;
+    font-size: 1.5rem;
+}
+
+.contact-info-perso-ad-deatils h4 {
+    color: #CD6602;
+    margin-bottom: 1rem;
+}
+
+.contact-info-perso-ad-deatils p{
+    margin-bottom: 1rem;
+}
+
+.contact-info-ad-details h3 {
+    color: #CD6602;
+    font-size: 1.5rem;
+}
+
+.contact-info-ad-details {
+    margin-bottom: 3rem;
+    border: 2px solid #CD6602;
+    padding: 2rem 1.5rem;
+}
+
+.input-ad-details {
+    width: 100%;
+    height: 150px;
+    font-size: 1rem;
+    padding: .5rem;
+    border: 2px solid #CD6602;
+}
+
+@media (max-width: 1270px) {
+    .bottom-ad-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 850px) {
+    .bottom-ad-details {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

@@ -1,28 +1,44 @@
-import React from 'react';
-import { CgAdd } from "react-icons/cg";
-
+import React, { useState } from 'react';
+import { MenuItems } from './MenuItems';
+import './Navbar.css'
+import { Link } from 'react-router-dom';
 
 function Navbar(){
+    
+    const [showed, setShowed] = useState(false);
+    function handleClick(){
+         setShowed((showed) => {
+            return (!showed);
+        })
+    }
+    
     return(
         <>
-        <Navbar class="navbar">
-            <div class="navbar-logo">
+        <nav class="navbar-navbar">
+            <div class="navbar-logo-navbar">
                 <img src="" alt="Logo-image"></img>
             </div>
-
-            <div class="list">
-                <div class="items-list">
-                    <a href="">Accueil</a>
-                    <a href="">Aide</a>
-                    <a href="">Compte</a>
-                </div>
-                <div class="button-dep">
-                    <button>
-                        <CgAdd /> <span>Déposer Annonce</span>
-                    </button>
-                </div>
+            <div>
+                <i className = {showed ? "fas fa-times" : "fas fa-bars"} onClick={handleClick}></i>
             </div>
-        </Navbar>
+            <div class={showed ? "navbar-portion-navbar active" : "navbar-portion-navbar"}>
+                <ul class="items-list-navbar">
+                    {
+                        MenuItems.map((item, index) => {
+                            return(                               
+                                <li key={index} class="list-navbar">
+                                    <Link className={item.className} to={item.url}>{item.title}</Link>
+                                </li>
+                            )
+                        })
+                    }
+                    </ul>
+                    <button class="button-dep-navbar">
+                        <i class="fa-solid fa-plus"></i>
+                        <span class="dep-text-navbar">Déposer Annonce</span>
+                    </button>
+            </div>
+        </nav>
         </>
     )
 }

@@ -1,0 +1,66 @@
+.container-my-fav {
+    margin-top: 5.2rem;
+}
+
+.top-my-fav {
+    background-image: url('../images/background.jpg');
+    background-repeat: no-repeat;
+    height: 50vh;
+    align-items: center;
+    position: relative;    
+}
+
+.top-title-my-fav {
+    position: absolute;
+    top: 2rem;
+    left: 7rem;
+    background-color: rgba(0,0,0, 0.67);
+    width: 40%; height: 35%;
+}
+
+.top-title-my-fav h1{
+    color: #EBB683;
+    padding: .3rem 1.4rem;
+}
+
+.top-title-my-fav h2{
+    color: #fff;
+    padding: .3rem 1.4rem;
+    font-size: 1.5rem;
+}
+
+.photo-my-fav {
+    flex-basis: 35%;
+    text-align: center;
+}
+
+.photo-my-fav img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.ads-div-my-fav h2{
+    border: 2px solid #CD6602;
+    padding: 1.2rem 3rem;
+    text-align: center;
+    font-size: 2.7rem;
+    max-width: max-content;
+    margin: auto;
+    border-radius: 30px;
+    margin-top: 5%;
+}
+
+.ads-div-my-fav h2 span {
+    color:#CD6602;
+}
+
+.list-ads-my-fav {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 23rem);
+    gap: 5%;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
