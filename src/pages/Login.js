@@ -16,9 +16,16 @@ const Login = ({login , isAuthenticated})=> {
     });
     
     const onSubmit = e =>{
+        console.log('hello login');
         e.preventDefault();
+        console.log('hello login2');
+
         login(email,password);
-        console.log(isAuthenticated)
+        console.log('hello login3');
+
+        console.log(isAuthenticated);
+        console.log('hello login4');
+
     };
 
     const continueWithGoogle = async()=>{

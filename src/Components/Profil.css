@@ -1,5 +1,5 @@
 .my-profil{
-    margin-top: 5.2rem;
+    margin-top: .1rem;
 }
 
 .up-form-profil {
@@ -17,7 +17,8 @@
 .top-my-profil {
     background-image: url('../images/background.jpg');
     background-repeat: no-repeat;
-    height: 50vh;
+    background-size: 100% 100%;
+    height: 70vh;
     align-items: center;
     position: relative;   
     margin-bottom: 25px; 

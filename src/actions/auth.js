@@ -162,6 +162,8 @@ export const login = (email,password) => async dispatch =>{
    };
    const body = JSON.stringify({email,password});
    try{
+      console.log(body)
+      console.log("welcome in login")
       const res = await axios.post(`http://127.0.0.1:8000/auth/jwt/create/`,body,config);
       console.log("dispatch login success")
       dispatch({
