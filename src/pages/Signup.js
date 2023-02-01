@@ -25,7 +25,9 @@ const Signup = ({signup , isAuthenticated})=> {
         console.log("default has been prevented")
         if(password===re_password){
           console.log("working on signup")
+
           signup(prenom,nom,email,password,re_password);
+          
           setAccountCreated(true);
           console.log("end of signup")
         }

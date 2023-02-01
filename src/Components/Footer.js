@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes  } from "react-router-dom";
 import './Footer.css'
 
 function Footer(){
@@ -13,13 +13,13 @@ function Footer(){
                 </div>
                 <div className="up-div-center-footer">
                     <div className="socio-div-footer">
-                        <Link><img src="/images/facebook.svg" alt="facebook" /></Link>
-                        <Link><img src="/images/twitter.svg" alt="twitter" /></Link>
-                        <Link><img src="/images/instagram.svg" alt="instagram" /></Link>
-                        <Link><img src="/images/linkedIn.svg" alt="linkedIn" /></Link>
+                        <Link to=''><img src="/images/facebook.svg" alt="facebook" /></Link>
+                        <Link to=''><img src="/images/twitter.svg" alt="twitter" /></Link>
+                        <Link to=''><img src="/images/instagram.svg" alt="instagram" /></Link>
+                        <Link to=''><img src="/images/linkedIn.svg" alt="linkedIn" /></Link>
                     </div>
                     <div>
-                       <Link className="go-help-footer"><span>Qui sommes-nous?</span></Link>
+                       <Link to='' className="go-help-footer"><span>Qui sommes-nous?</span></Link>
                     </div>
                 </div>
                 <div  className="up-div-right-footer">

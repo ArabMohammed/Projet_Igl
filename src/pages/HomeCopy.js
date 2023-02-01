@@ -2,8 +2,8 @@ import React , {useState,Fragment} from "react";
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { loadImages,getImagesNumberAnnonce } from '../actions/annonces.js';
-import { list } from "postcss";
 import {updateProfileImage ,updateprofile} from '../actions/profile'
+
 function Home({user,loadImages,getImagesNumberAnnonce,updateProfileImage,updateprofile}){
     let last_name="";
     let first_name ="";

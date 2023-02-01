@@ -1,14 +1,13 @@
 import React from 'react';
 import Navbar from './Components/Navbar';
 import './style.css';
-import Home from './pages/Home';
+import Home from './pages/HomeCopy';
 import About from './pages/About';
 import Account from './pages/Account';
 import { Route, Routes } from 'react-router';
 import AccountInfo from './pages/AccountInfo';
 import MyAds from './pages/MyAds';
 import MyFav from './pages/MyFav';
-import AdDetails from './Components/AdDetails';
 import AdConsult from './pages/AdConsult';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
