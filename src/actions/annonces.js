@@ -1,12 +1,15 @@
 import { data } from 'autoprefixer';
 import axios from 'axios'
+import { useEffect } from 'react';
 import DateObject from "react-date-object";
 import {
     LOGIN_FAIL,
   }from './types'
 
 /************************************************************ */
+
 export const createAnnonce=()=> async dispatch =>{
+  console.log("test A");
   if(localStorage.getItem('access')){
     console.log("user have an access to create Annonce")
     const config ={
@@ -46,8 +49,8 @@ export const createAnnonce=()=> async dispatch =>{
     };
     const body = JSON.stringify(annonce);
     try{
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/annonces/create/`,body,config);
-        console.log(res.data)
+        const res = await axios.post(`http://127.0.0.1:8000/api/annonces/create/`,body,config);
+        console.log(res.data);
     }catch (err){
         console.log("create a new contact fail ")
     }
@@ -57,6 +60,7 @@ export const createAnnonce=()=> async dispatch =>{
   })
   }
 }
+
 /************************************************************** */
 export const loadImages = (image_url,id_annonce)=> async dispatch =>{
     console.log("welcome in getcontact")
@@ -144,6 +148,7 @@ export const rechercheAnnonce=()=>async dispatch =>{
   })
   }
 };
+
 export const getAnnonceDetail=()=>async dispatch =>{
   if(localStorage.getItem('access')){
     console.log("user have an access to research annonce")
@@ -156,7 +161,8 @@ export const getAnnonceDetail=()=>async dispatch =>{
     const id_annonce=1
     try{
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/annonces/${id_annonce}/`,config);
-        console.log(res.data)
+        console.log(res.data);
+        return res.data;
     }catch (err){
         console.log("create a new contact fail ")
     }
@@ -166,6 +172,7 @@ export const getAnnonceDetail=()=>async dispatch =>{
   })
   }
 };
+
 export const DeleteAnnonce=()=>async dispatch =>{
   if(localStorage.getItem('access')){
     console.log("user have an access to research annonce")
