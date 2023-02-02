@@ -1,0 +1,144 @@
+.container-ah {
+    display:grid;
+    grid-template-columns: repeat(3, 33% 33% 33%);
+    background: linear-gradient(#DEF9FA, #EBFEFF, #fff);
+    padding: 10vw 0 8vw 5vw; 
+}
+
+.profil-ah {
+    border: #33BBCF 5px solid;
+    border-radius: 50%;
+    background-color: #fff;
+    width: 15rem;
+    height: 15rem;
+    align-items: center;
+    -webkit-box-shadow: 0 0 10px gray;
+    box-shadow: 0 0 10px gray;
+    cursor: pointer;
+}
+
+.profil-ah:hover{
+    background-color: #EBFEFF;
+}
+
+.profil-ah:active{
+    opacity: 0.5;
+}
+
+.profil-ah img {
+    height: 10rem;
+    width: 10rem;
+    padding-left: 4rem;
+    padding-top: 4rem;
+}
+
+.options-ah img {
+    width: 3rem;
+    height: 3rem;
+}
+
+.options-ah {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5%;
+    max-width: 50%;
+}
+
+.option-ah:hover{
+    background-color: #EBFEFF;
+}
+
+.option-ah:active{
+    opacity: 0.5;
+}
+
+.option-ah {
+    border: #33BBCF 5px solid;
+    border-radius: 50%;
+    background-color: #fff;
+    width: 7rem;
+    height: 7rem;
+    padding-left: 1.7rem;
+    padding-top: 1.5rem;
+    -webkit-box-shadow: 0 0 10px gray;
+    box-shadow: 0 0 10px gray;
+    cursor: pointer;
+}
+
+.salutaion-ah h2{
+    font-size: 2.4rem;
+    color: #33BBCF;
+    max-width: 100%;
+    padding-bottom: 2rem;
+    text-decoration: underline;
+    margin-left: 3rem;
+}
+
+.salutaion-ah p{
+    font-size: 2rem;
+    max-width: 70%;
+    margin-left: 3rem;
+}
+
+
+@media (max-width: 860px){
+    .container-ah {
+        /*display:grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 1fr);*/
+        display: flex;
+        flex-direction: column;
+        padding-top: 15vh;
+        padding-bottom: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profil-ah {
+        padding: 0;
+        height: 12rem;
+        width: 12rem;
+        padding-left: 1rem;
+        padding-top: 1rem;
+        margin: 2rem;
+    }
+
+    .profil-ah img{
+        width: 8rem;
+        height: 8rem;
+        padding-left: 1.7rem;
+        padding-top: 1.2rem;
+    }
+
+    .options-ah img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .options-ah {
+        margin: 2rem;
+        align-items: center;
+        display: grid;
+        gap: 5%;
+    }
+
+    .option-ah {
+        width: 6rem;
+        height: 6rem;
+        padding-left: 1.4rem;
+    }
+
+    .salutaion-ah h2{
+        font-size: 2rem;
+        margin-left: 30%;
+        padding: 0;
+    }
+
+    .salutaion-ah p{
+        margin-left: 30%;
+        font-size: 2rem;
+        max-width: 80%;
+    }
+
+}

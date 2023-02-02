@@ -1,0 +1,193 @@
+.container-my-account {
+    margin-top: 5.2rem;
+}
+
+.top-my-account {
+    background-image: url('../images/background.jpg');
+    background-repeat: no-repeat;
+    height: 50vh;
+    align-items: center;
+    position: relative;    
+}
+
+.top-title-my-account {
+    position: absolute;
+    top: 2rem;
+    left: 7rem;
+    background-color: rgba(0,0,0, 0.67);
+    width: 40%; height: 35%;
+}
+
+.top-title-my-account h1{
+    color: #EBB683;
+    padding: .3rem 1.4rem;
+}
+
+.top-title-my-account h2{
+    color: #fff;
+    padding: .3rem 1.4rem;
+    font-size: 1.5rem;
+}
+
+.photo-my-account {
+    flex-basis: 35%;
+    text-align: center;
+}
+
+.photo-my-account img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.center-my-account{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 2rem 2rem;    
+    justify-content: space-around;
+}
+
+.switch-my-account{
+    font-size: 1.7rem;
+}
+
+.switch-my-account p{
+    margin: 2rem;
+    cursor: pointer;
+}
+
+.switch-my-account p i{
+    padding-right: .2rem;
+}
+
+.photo-my-account p {
+    font-size: 1.6rem;
+    color: #CD6602;
+}
+
+.link1 {
+    text-decoration: none;
+    color: #000;
+}
+
+.link2{
+    text-decoration: none;
+    color: #000;
+}
+
+.link1:hover, .link2:hover{
+    color:#CD6602;
+    transition: all .5s;
+    text-decoration: underline;
+}
+
+.link1:active, .link2:active{
+    color:#EBB683;
+    text-decoration: underline;
+}
+
+.bottom-my-account {
+    margin-top: 4rem;
+}
+
+.fav-div-my-account h2 span {
+    color:#CD6602;
+}
+
+.fav-div-my-account{
+    margin-bottom: 5%;
+}
+
+.see-all-fav, .see-all-ads {
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    background-color: #000;
+    color: #EBB683;
+    border: 1px solid #000;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 0 10px gray;
+    box-shadow: 2px 2px 10px gray;
+    /*position: absolute;
+    right: 45%;
+    margin-bottom: 20px;*/
+    margin-left: 45%;
+    margin-top: 20px;
+}
+
+.see-all-ads:hover , .see-all-fav:hover {
+    background-color: #EBB683;
+    color: #000;
+    border: 1px solid #EBB683;
+}
+
+.see-all-ads:active, .see-all-fav:active{
+    opacity: .7;
+}
+
+.fav-div-my-account h2{
+    border: 2px solid #CD6602;
+    padding: 1.2rem 3rem;
+    text-align: center;
+    font-size: 2.7rem;
+    max-width: max-content;
+    margin: auto;
+    border-radius: 30px;
+}
+
+.ads-div-my-account h2{
+    border: 2px solid #CD6602;
+    padding: 1.2rem 3rem;
+    text-align: center;
+    font-size: 2.7rem;
+    max-width: max-content;
+    margin: auto;
+    border-radius: 30px;
+}
+
+.ads-div-my-account h2 span {
+    color:#CD6602;
+}
+
+.list-fav-my-account {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 23rem);
+    gap: 5%;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.list-ads-my-account {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 23rem);
+    gap: 5%;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+@media (max-width: 780px) {
+    .list-fav-my-account {
+        margin: 40px 0;
+        justify-content: center;
+        margin-bottom: 150px;
+    }
+
+    .photo-my-account {
+        flex-basis: 50%;
+    }
+
+    .see-all-fav, .see-all-ads {
+        margin-left: 40%;
+    }
+
+    .see-all-ads {
+        margin-top: 25%;
+        margin-bottom: 20%;
+    }
+    
+}
