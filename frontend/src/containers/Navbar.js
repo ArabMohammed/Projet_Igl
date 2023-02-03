@@ -2,11 +2,16 @@ import React, { Fragment, useState } from 'react';
 import { Link, Navigate, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
+<<<<<<< HEAD
 import {createAnnonce ,rechercheAnnonce ,getAnnonceDetail ,DeleteAnnonce } from '../actions/annonces'
 import { createContact } from '../actions/contacts';
 import {updateProfile} from '../actions/profile';
 const Navbar = ({ logout, isAuthenticated,createAnnonce,
     createContact,rechercheAnnonce ,getAnnonceDetail,DeleteAnnonce,updateProfile}) => {
+=======
+
+const Navbar = ({ logout, isAuthenticated }) => {
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
     const [redirect, setRedirect] = useState(false);
 
     const logout_user = () => {
@@ -26,6 +31,7 @@ const Navbar = ({ logout, isAuthenticated,createAnnonce,
     );
 
     const authLinks = () => (
+<<<<<<< HEAD
         <Fragment>
          <li className='nav-item'>
             <a className='nav-link' href='#!' onClick={logout_user}>Logout</a>
@@ -34,6 +40,11 @@ const Navbar = ({ logout, isAuthenticated,createAnnonce,
             <a className='nav-link' href='#!' onClick={updateProfile}>creer annonce</a>
          </li>
         </Fragment>
+=======
+        <li className='nav-item'>
+            <a className='nav-link' href='#!' onClick={logout_user}>Logout</a>
+        </li>
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
     );
     if(redirect){
       console.log("isAuthenticated is true")
@@ -71,4 +82,8 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
+<<<<<<< HEAD
 export default connect(mapStateToProps, {logout,createAnnonce,createContact,rechercheAnnonce,getAnnonceDetail,DeleteAnnonce,updateProfile})(Navbar);
+=======
+export default connect(mapStateToProps, { logout })(Navbar);
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef

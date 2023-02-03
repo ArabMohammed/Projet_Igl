@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React , {useState,Fragment} from "react";
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -7,10 +8,21 @@ import {updateProfileImage ,updateprofile} from '../actions/profile'
 function Home({user,loadImages,getImagesNumberAnnonce,updateProfileImage,updateprofile}){
     let last_name="";
     let first_name ="";
+=======
+import React from "react";
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+function Home({user}){
+    let last_name="";
+    let first_name ="";
+    console.log("welcome in home page")
+    console.log(user)
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
     if(user!==null){
      first_name=user.prenom
      last_name=user.nom
     }
+<<<<<<< HEAD
     /******************** */
     /********************* */
     const [formData,setFormData]=useState({
@@ -63,6 +75,8 @@ function Home({user,loadImages,getImagesNumberAnnonce,updateProfileImage,updatep
     );
     }
     /***************************** */
+=======
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
     return(
     <div className="container">
         <div class="jumbotron mt-5">
@@ -73,6 +87,7 @@ function Home({user,loadImages,getImagesNumberAnnonce,updateProfileImage,updatep
             <p>Click the Log button</p>
             <Link class="btn btn-primary btn-lg" to="/login" role="button">Login</Link>
         </div>
+<<<<<<< HEAD
         <div class="jumbotron mt-5">
           <h1>Get request images</h1>
            <button onClick={getannonceimages}></button>
@@ -88,6 +103,8 @@ function Home({user,loadImages,getImagesNumberAnnonce,updateProfileImage,updatep
            <h2>Imge List</h2>
            <ul id="imageList"></ul>
         </div>
+=======
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
         <h1>Home</h1>
     </div>
     )
@@ -95,4 +112,8 @@ function Home({user,loadImages,getImagesNumberAnnonce,updateProfileImage,updatep
 const mapStateToProps = state =>({
     user : state.auth.user
 });
+<<<<<<< HEAD
 export default connect(mapStateToProps,{loadImages,getImagesNumberAnnonce,updateProfileImage})(Home);
+=======
+export default connect(mapStateToProps,null)(Home);
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef

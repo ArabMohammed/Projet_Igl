@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { data } from 'autoprefixer';
+=======
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 import axios from 'axios'
 import {
     LOGIN_SUCCESS , 
@@ -99,6 +102,7 @@ export const logout=()=> dispatch=>{
   })
 }
 
+<<<<<<< HEAD
 
 
 /********************************************* */
@@ -126,6 +130,13 @@ export const getUsers = ()=> async dispatch =>{
 };
 /**************************************************** */
 export const load_user = () => async dispatch =>{
+=======
+/********************************************* */
+
+export const load_user = () => async dispatch =>{
+  console.log("welcome in userloading action ")
+  console.log(localStorage.getItem('access'))
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
   if(localStorage.getItem('access')){
     const config ={
         headers:{

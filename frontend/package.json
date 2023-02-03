@@ -9,7 +9,10 @@
     "axios": "^1.2.1",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
+<<<<<<< HEAD
     "react-date-object": "^2.1.5",
+=======
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.5.0",

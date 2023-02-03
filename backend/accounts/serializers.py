@@ -3,6 +3,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.core import exceptions
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+<<<<<<< HEAD
 from django.db import models
 from .models import UserAccount
 from api.localisation.models import Wilaya,Commune
@@ -12,10 +13,15 @@ User = get_user_model()
 
 ###########################
 
+=======
+User = get_user_model()
+
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 class UserCreateSerializer(UserCreateSerializer):
   class Meta:
     model = User
     fields = ('id','prenom', 'nom', 'email', 'password')
+<<<<<<< HEAD
 
 #########################
 
@@ -59,6 +65,8 @@ class UpdateProfileSerializer(serializers.ModelSerializer):
     return instance
 '''
 ##########################################################
+=======
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 '''
 class UserCreateSerializer(serializers.ModelSerializer):
   class Meta:
@@ -90,12 +98,20 @@ class UserCreateSerializer(serializers.ModelSerializer):
     return user
    '''
 ##############UseLess##########################
+<<<<<<< HEAD
 
+=======
+'''
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 class UserSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
     fields = ('first_name', 'last_name', 'email',)
+<<<<<<< HEAD
 
+=======
+'''
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 
 '''
 from django.contrib.auth import get_user_model

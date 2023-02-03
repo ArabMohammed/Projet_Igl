@@ -4,6 +4,10 @@ import {connect} from 'react-redux'
 import {login} from '../actions/auth'
 import axios from 'axios';
 const Login = ({login , isAuthenticated})=> {
+<<<<<<< HEAD
+=======
+    console.log("welcome in login page")
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
     const [formData,setFormData]=useState({
         email : '',
         password: '' 
@@ -18,6 +22,10 @@ const Login = ({login , isAuthenticated})=> {
     const onSubmit = e =>{
         e.preventDefault();
         login(email,password);
+<<<<<<< HEAD
+=======
+        console.log("verfication if aurhentified")
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
         console.log(isAuthenticated)
     };
 
@@ -33,6 +41,10 @@ const Login = ({login , isAuthenticated})=> {
     }
 
     if(isAuthenticated){
+<<<<<<< HEAD
+=======
+        console.log("isAuthenticated is true")
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
         return(<Navigate to="/"/>)
     }
     

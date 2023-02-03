@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
+<<<<<<< HEAD
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics , mixins ,permissions ,authentication
@@ -14,6 +15,11 @@ from .serializers import UserCreateSerializer , UploadProfileImageSerializer ,Us
 from api.annonces.custom_renderers import PNGRenderer
 from api.contacts.models import Contact
 from api.localisation.models import Wilaya,Commune
+=======
+from .serializers import UserCreateSerializer, UserSerializer
+from rest_framework.response import Response
+from rest_framework import permissions, status
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 
 class RegisterView(APIView):
   def post(self, request):
@@ -36,6 +42,7 @@ class RetrieveUserView(APIView):
     user = request.user
     user = UserSerializer(user)
 
+<<<<<<< HEAD
     return Response(user.data, status=status.HTTP_200_OK)
 ##############################################################
 
@@ -81,3 +88,6 @@ class GetImageProfileAPIView(generics.CreateAPIView):
         data = queryset
         print("image fetched ")
         return Response(data, content_type='image/png')
+=======
+    return Response(user.data, status=status.HTTP_200_OK)
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'corsheaders',
+<<<<<<< HEAD
     #'social_django',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
@@ -49,6 +50,11 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+=======
+    'social_django',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist'
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 
 ]
 
@@ -139,6 +145,7 @@ REST_FRAMEWORK = {
         #'rest_framework.authentication.BasicAuthentication',
         #'rest_framework.authentication.SessionAuthentication',
     ),
+<<<<<<< HEAD
     ## you must return it for production
     ##it insure that only authentified users can use certaisn apis
     #'DEFAULT_PERMISSION_CLASSES':(
@@ -150,12 +157,21 @@ REST_FRAMEWORK = {
     #)
     'DEFAULT_PAGINATION_CLASS':"rest_framework.pagination.LimitOffsetPagination",
     'PAGE_SIZE':10
+=======
+    'DEFAULT_PERMISSION_CLASSES':(
+         'rest_framework.permissions.IsAuthenticated'
+    )
+    #'DEFAULT_RENDERER_CLASSES': (
+     # 'rest_framework.renderers.JSONRenderer',
+    #)
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 }
 '''
 REST_AUTH_SERIALIZERS = {
     'TOKEN_SERIALIZER': 'jobs_home.serializer.TokenSerializer',
 }
 '''
+<<<<<<< HEAD
 ########################################################
 
 
@@ -183,17 +199,34 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 '''
+=======
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOpenId',
+    #'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+)
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 '''
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = "http://localhost:3000"
 GOOGLE_OAUTH2_SOCIAL_AUTH_RAISE_EXCEPTIONS = True
 SOCIAL_AUTH_RAISE_EXCEPTIONS = True
 '''
+<<<<<<< HEAD
 #SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '25353584449-6a9mvr6djvt8lj1ons7lpcd9t9dh40e4.apps.googleusercontent.com'
 #SOCIAL_AUTH_GOOGLE_OAUTH2_SECRT = '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'
 #SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile', 'openid']
 
 
 #############################################################
+=======
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '25353584449-6a9mvr6djvt8lj1ons7lpcd9t9dh40e4.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRT = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile', 'openid']
+SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name', 'last_name']
+
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES':('JWT',),
     'ACCESS_TOKEN_LIFETIME':timedelta(minutes=60),
@@ -216,8 +249,13 @@ DJOSER ={
     'ACTIVATION_URL':'activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL':True,
     'PASSWORD_RESET_CONFIRM_RETYPE':True,
+<<<<<<< HEAD
     #'SOCIAL_AUTH_TOKEN_STRATEGY':'djoser.social.token.jwt.TokenStrategy',
     #'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS':['http://localhost:3000/google'],
+=======
+    'SOCIAL_AUTH_TOKEN_STRATEGY':'djoser.social.token.jwt.TokenStrategy',
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS':['http://localhost:3000/google'],
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
     'SERIALIZERS':{
         'user_create':'accounts.serializers.UserCreateSerializer',
         'user':'djoser.serializers.UserSerializer',
@@ -259,6 +297,7 @@ CORS_ORIGIN_WHITELIST = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+<<<<<<< HEAD
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
@@ -269,6 +308,13 @@ STATICFILES_DIRS=[
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # URL used to access the media
+=======
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'build/static')
+]
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

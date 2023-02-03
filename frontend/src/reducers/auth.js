@@ -24,6 +24,10 @@ const initialState ={
 
 export default function(state = initialState, action) {
     const { type, payload } = action;
+<<<<<<< HEAD
+=======
+    console.log("type of action : "+type)
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
     switch(type) {
         case AUTHENTIFICATED_SUCCESS:
             return {

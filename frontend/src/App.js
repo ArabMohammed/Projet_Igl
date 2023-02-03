@@ -10,6 +10,7 @@ import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
 import Layout from './hocs/Layout'
 import {Provider} from 'react-redux';
 import store from './store'
+<<<<<<< HEAD
 import About from './pages/About';
 import Aide from './pages/Aide';
 import GestionCompte from './Components/gestionCompte';
@@ -20,6 +21,8 @@ import SignalerProblem from './Components/signalerProblem';
 import ChatApp from './Components/chatApp';
 
 
+=======
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
 function App(){
   return(
   <Provider store={store}>
@@ -33,6 +36,7 @@ function App(){
           <Route   path='/google' element={<Google/>} />
           <Route   path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm/>}/>
           <Route   path="/activate/:uid/:token" element={<Activate/>}/>
+<<<<<<< HEAD
 	  <Route path='/About' element={<About />} />
 	  <Route path='/aide' element={<Aide/>}></Route>
           <Route path='/aide/gestion des comptes' element={<GestionCompte/>} />
@@ -42,6 +46,8 @@ function App(){
           <Route path='/aide/problem' element={<SignalerProblem/>}/>
           <Route path='/Compte/Admin' element={<AdminSection/>}/>
           <Route path='/Compte/mes_messages' element={<ChatApp/>}/>
+=======
+>>>>>>> 5381141f3763ac1fae77b67a6d3990af0f863eef
         </Routes>
       </Layout>
     </BrowserRouter>
