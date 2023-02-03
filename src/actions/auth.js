@@ -19,6 +19,7 @@ import {
     GOOGLE_AUTH_SUCCESS,
     GOOGLE_AUTH_FAIL,
   }from './types'
+  import {getListWilayasCommunes} from "./localisation"
 /**********reset password confirm******************************* */
 
 export const reset_password_confirm=(uid,token,new_password, re_new_password)=>async dispatch =>{
@@ -138,7 +139,7 @@ export const load_user = () => async dispatch =>{
         const res = await axios.get(`http://127.0.0.1:8000/auth/users/me/`,config);
         dispatch({
             type:LOAD_USER_SUCCESS,
-            payload:res.data
+            payload:res.data,
         })
     }catch (err){
         dispatch({
@@ -172,6 +173,8 @@ export const login = (email,password) => async dispatch =>{
       });
       console.log("loading user")
       dispatch(load_user());
+      console.log("load wilayas and communes")
+      dispatch(getListWilayasCommunes())
    }catch(err){
     console.log("login fail")
     dispatch({
@@ -183,7 +186,7 @@ export const login = (email,password) => async dispatch =>{
 
 
 export const signup = (prenom,nom,email,password,re_password) => async dispatch =>{
-  console.log('welcome');
+  console.log('welecome');
   const config ={
    headers :{
        'Content-Type':'application/json'

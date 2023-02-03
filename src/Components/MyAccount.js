@@ -3,17 +3,74 @@ import "./MyAccount.css"
 import { Link } from "react-router-dom";
 import { AdsList } from "./AdsList";
 import AdCard from "./AdCard";
+import { LOGIN_FAIL } from "../actions/types";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function MyAccount(){
+    const [ads, setAds] = useState([]);
+    let obj = {}
+
     let i = 0, j = 0;
     const navigate = useNavigate();
-    function clickHandler(e, item){
+    function clickHandler(item){
+        console.log("state dans use navigate : ", item);
         navigate(
             '/compte/mesannonces/annonce',
-            item
+            {
+                state:
+                    { 
+                        titre: item.titre,
+                        prix: item.prix,
+                        surface: item.surface,
+                        adress: item.adresse_bien_immobilier,
+                        date : item.date_publication,
+                        src: item.pk,
+                        description: item.description,
+                        categorie: item.categorie_immobilier,
+                        type: item.type_immobilier,
+                        unite: item.unite_prix,
+                        wilaya: item.wilaya,
+                        commune: item.commune,
+                    }
+            }
         )
     }
+
+   
+      const getUserAnnonces = ()=> async dispatch =>{
+        console.log("welcome in annonces")
+        if(localStorage.getItem('access')){
+          console.log("user have an access")
+          const config ={
+              headers:{
+                  'Content-Type':'application/json',
+                  'Authorization':`JWT ${localStorage.getItem('access')}`
+              }
+          };
+          try{
+              console.log("welcome in annonces1") 
+              const res = await axios.get(`http://127.0.0.1:8000/api/annonces/mesannonces/`,config);
+              console.log(res.data);
+              setAds(res.data);
+              console.log(res);
+          }catch (err){
+              console.log("getting annonces of user fail ")
+          }
+        }else{
+          dispatch({
+            type:LOGIN_FAIL
+        })
+        }
+      };
+
+
+    useEffect(() => getUserAnnonces(),
+        []);
+
+
     return(
         <>
             <div className="container-my-account">
@@ -34,44 +91,42 @@ function MyAccount(){
                     </div>
                 </div>
                 <div className="bottom-my-account">
-                    <div className="fav-div-my-account">
-                        <h2><span>Mes</span> favoris</h2>
-                        <div className="list-fav-my-account">
-                            {
-                               AdsList.map((item) => {
-                                i++;
-                                if(i>4) return;
-                                return(
-                                    <AdCard title={item.title}
-                                     price={item.price}
-                                     surface={item.surface}
-                                     adress={item.adress}
-                                     owner={item.owner}
-                                     date={item.date}
-                                     isNegotiable={item.isNegotiable}
-                                     />
-                                )
-                               })
-                            }
-                        </div>
-                        <Link to="/compte/mesfavoris"><button className="see-all-fav">Voir tous</button></Link>
-                    </div>
                     <div className="ads-div-my-account">
                         <h2><sapn>Mes</sapn> annonces</h2>
                         <div className="list-ads-my-account">
                         {
-                               AdsList.map((item) => {
+                               ads.map((item) => {
                                 j++;
                                 if(j>4) return;
+                                obj = {
+                                    titre: item.titre,
+                                    prix: item.prix,
+                                    surface: item.surface,
+                                    adress: item.adresse_bien_immobilier,
+                                    date : item.date_publication,
+                                    src: item.pk,
+                                    description: item.description,
+                                    categorie: item.categorie_immobilier,
+                                    type: item.type_immobilier,
+                                    unite: item.unite_prix,
+                                    wilaya: item.wilaya,
+                                    commune: item.commune,
+                                    unite: item.unite_prix,
+
+                                }
+                                
                                 return(
-                                    <div onClick={() => clickHandler(item)}>
-                                        <AdCard title={item.title}
-                                        price={item.price}
+                                    <div onClick={() => clickHandler(obj)}>
+                                        {console.log("Les info avant passage : " + obj.titre )}
+                                        <AdCard 
+                                        key={item.pk}
+                                        title={item.titre}
+                                        price={item.prix}
                                         surface={item.surface}
-                                        adress={item.adress}
-                                        owner={item.owner}
-                                        date={item.date}
-                                        isNegotiable={item.isNegotiable}
+                                        adress={item.adresse_bien_immobilier}
+                                        date={item.date_publication}
+                                        isNegotiable={false}
+                                        src={item.pk}
                                         />
                                      </div>
                                 )

@@ -1,10 +1,10 @@
 import React , {useState,Fragment} from "react";
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { loadImages,getImagesNumberAnnonce } from '../actions/annonces.js';
+import { loadImage,getImagesNumberAnnonce } from '../actions/annonces.js';
 import {updateProfileImage ,updateprofile} from '../actions/profile'
 
-function Home({user,loadImages,getImagesNumberAnnonce,updateProfileImage,updateprofile}){
+function Home({user,loadImage,getImagesNumberAnnonce,updateProfileImage,updateprofile}){
     let last_name="";
     let first_name ="";
     if(user!==null){
@@ -95,4 +95,4 @@ function Home({user,loadImages,getImagesNumberAnnonce,updateProfileImage,updatep
 const mapStateToProps = state =>({
     user : state.auth.user
 });
-export default connect(mapStateToProps,{loadImages,getImagesNumberAnnonce,updateProfileImage})(Home);
+export default connect(mapStateToProps,{loadImage,getImagesNumberAnnonce,updateProfileImage})(Home);

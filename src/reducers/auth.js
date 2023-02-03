@@ -14,16 +14,18 @@ import {
  ACTIVATION_FAIL,
  GOOGLE_AUTH_SUCCESS,
  GOOGLE_AUTH_FAIL,
+ LOAD_WILAYA_COMMUNES,
 }from '../actions/types'
 const initialState ={
    access: localStorage.getItem('access'),
    refresh: localStorage.getItem('refresh'),
    isAuthenticated:null,
-   user : null
+   user : null,
+   wilayas_communes:null ,
 }
 
 export default function(state = initialState, action) {
-    const { type, payload } = action;
+    const { type, payload} = action;
     switch(type) {
         case AUTHENTIFICATED_SUCCESS:
             return {
@@ -49,6 +51,13 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 user: payload
+            }
+        case LOAD_WILAYA_COMMUNES:
+            console.log("uploading wilayas and communes")
+            console.log(payload)
+            return {
+                ...state,
+                wilayas_communes: payload
             }
         case AUTHENTIFICATED_FAIL:
             return {

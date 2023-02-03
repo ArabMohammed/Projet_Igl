@@ -8,46 +8,45 @@ import AdCard from "./AdCard";
 import{ getAnnonceDetail, createAnnonce} from '../actions/annonces';
 import { dispatch } from "react";
 import axios from 'axios';
-import { Connect } from "react-redux";
+import { connect } from "react-redux";
 import {
     LOGIN_FAIL,
   }from '../actions/types'
-
+import { useNavigate } from "react-router-dom";
 
 function Myads({user}){
 
     const [ads, setAds] = useState([]);
 
-    
+    let obj = {}
 
-    const getAnnonceDetail=()=>async dispatch =>{
-        console.log('hello');
-        if(localStorage.getItem('access')){
-          console.log("user have an access to research annonce")
-          const config ={
-              headers:{
-                  'Content-Type':'application/json',
-                  'Authorization':`JWT ${localStorage.getItem('access')}`
-              }
-          };
-          const id_annonce=1
-          try{
-              const res = await axios.get(`http://127.0.0.1:8000/api/annonces/${id_annonce}/`,config);
-              console.log(res.data);
-              setAds(res.data);
-              console.log('ads est : '+ads);
-          }catch (err){
-              console.log("create a new contact fail ")
-          }
-        }else{
-          dispatch({
-            type:LOGIN_FAIL
-        })
-        }
-      };
-
+    const navigate = useNavigate();
+    function clickHandler(item){
+        console.log("state dans use navigate : ", item);
+        navigate(
+            '/compte/mesannonces/annonce',
+            {
+                state:
+                    { 
+                        titre: item.titre,
+                        prix: item.prix,
+                        surface: item.surface,
+                        adress: item.adresse_bien_immobilier,
+                        date : item.date_publication,
+                        src: item.pk,
+                        description: item.description,
+                        categorie: item.categorie_immobilier,
+                        type: item.type_immobilier,
+                        unite: item.unite_prix,
+                        wilaya: item.wilaya,
+                        commune: item.commune,
+                    }
+            }
+        )
+    }
+   
       const getUserAnnonces = ()=> async dispatch =>{
-        console.log("welcome in getcontact")
+        console.log("welcome in annonces")
         if(localStorage.getItem('access')){
           console.log("user have an access")
           const config ={
@@ -57,10 +56,13 @@ function Myads({user}){
               }
           };
           try{
+              console.log("welcome in annonces1") 
               const res = await axios.get(`http://127.0.0.1:8000/api/annonces/mesannonces/`,config);
-              console.log(res.data)
+              console.log(res.data);
+              setAds(res.data);
+              console.log(res);
           }catch (err){
-              console.log("getting contacts of user fail ")
+              console.log("getting annonces of user fail ")
           }
         }else{
           dispatch({
@@ -70,8 +72,9 @@ function Myads({user}){
       };
 
 
-    useEffect(() => getAnnonceDetail(),
+    useEffect(() => getUserAnnonces(),
         []);
+
 
     
 
@@ -90,27 +93,41 @@ function Myads({user}){
                     <h2><sapn>Mes</sapn> annonces</h2>
                     <div className="list-ads-my-ads">
                     {
-                           /*ads.forEach((item) => {
-                            return(
-                                <AdCard title={item.titre}
-                                 price={item.prix}
-                                 surface={item.surface}
-                                 adress={item.adresse_bien_immobilier}
-                                 date={item.date_publication}
-                                 isNegotiable={false}
-                                 />
-                            )
-                           })*/
-                           
-                                <AdCard title={ads.titre}
-                                 price={ads.prix + ads.unite_prix}
-                                 surface={ads.surface}
-                                 adress={ads.adresse_bien_immobilier}
-                                 date={ads.date_publication}
-                                 isNegotiable={false}
-                                 />
-                          
-                        }
+                               ads.map((item) => {
+                                obj = {
+                                    titre: item.titre,
+                                    prix: item.prix,
+                                    surface: item.surface,
+                                    adress: item.adresse_bien_immobilier,
+                                    date : item.date_publication,
+                                    src: item.pk,
+                                    description: item.description,
+                                    categorie: item.categorie_immobilier,
+                                    type: item.type_immobilier,
+                                    unite: item.unite_prix,
+                                    wilaya: item.wilaya,
+                                    commune: item.commune,
+                                    unite: item.unite_prix,
+
+                                }
+                                
+                                return(
+                                    <div onClick={() => clickHandler(obj)}>
+                                        {console.log("Les info avant passage : " + obj.titre )}
+                                        <AdCard 
+                                        key={item.pk}
+                                        title={item.titre}
+                                        price={item.prix}
+                                        surface={item.surface}
+                                        adress={item.adresse_bien_immobilier}
+                                        date={item.date_publication}
+                                        isNegotiable={false}
+                                        src={item.pk}
+                                        />
+                                     </div>
+                                )
+                               })
+                            }
                     </div>
             </div>
         </div>

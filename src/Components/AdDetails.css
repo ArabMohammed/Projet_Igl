@@ -1,5 +1,5 @@
 .box-container-ad-details {
-    margin: 9rem 6rem;
+    margin: 4rem 4rem;
     justify-content: center;
 }
 
@@ -30,7 +30,19 @@ hr {
 }
 
 .images-ad-details {
-    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 40%);
+    height: 43rem;
+    gap: 10%;
+    margin-bottom: 5rem;
+    max-width: 100%;
+
+}
+
+.images-ad-details img{
+    height: 20rem;
+    border: #CD6602 2px solid;
+    padding: 1rem;
 }
 
 .description-ad-details h3 {
@@ -87,14 +99,97 @@ hr {
     border: 2px solid #CD6602;
 }
 
-@media (max-width: 1270px) {
+/* @media (max-width: 1270px) {
     .bottom-ad-details {
         grid-template-columns: repeat(2, 1fr);
     }
-}
 
-@media (max-width: 850px) {
     .bottom-ad-details {
         grid-template-columns: repeat(1, 1fr);
+        margin-bottom: 0;
     }
+
+} */
+
+@media (max-width: 1200px){
+    .images-ad-details {
+        display: grid;
+        grid-template-columns: repeat(2, 70%);
+        height: 90rem;
+        margin-bottom: 1rem;
+        width: 100%;
+        gap: 0%;
+    }
+    
+    .images-ad-details img{
+        border: #CD6602 2px solid;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 450px){
+
+    .bottom-ad-details {
+        grid-template-columns: repeat(1, 1fr);
+        margin-bottom: 0;
+        
+    }
+
+    .images-ad-details {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        height: 90rem;
+        margin-bottom: 1rem;
+        width: 100%;
+        gap: 0%;
+    }
+    
+    .images-ad-details img{
+        border: #CD6602 2px solid;
+        padding: 1rem;
+        width: 100%;
+
+    }
+
+}
+
+@media (max-width: 650px) {
+    .bottom-ad-details {
+        grid-template-columns: repeat(1, 1fr);
+        margin-bottom: 0;
+        
+    }
+
+    .images-ad-details {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        height: 60rem;
+        margin-bottom: 1rem;
+        gap: 5%;
+    }
+    
+    .images-ad-details img{
+        border: #CD6602 2px solid;
+        padding: 1rem;
+    }
+
+}
+
+@media (max-width: 850px){
+    .images-ad-details {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        height: 45rem;
+        margin-bottom: 1rem;
+        gap: 5%;
+    }
+    
+    .images-ad-details img{
+        border: #CD6602 2px solid;
+        padding: 1rem;
+        width: 100%;
+
+    }
+
+
 }

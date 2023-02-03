@@ -62,7 +62,7 @@ export const createAnnonce=()=> async dispatch =>{
 }
 
 /************************************************************** */
-export const loadImages = (image_url,id_annonce)=> async dispatch =>{
+export const loadImage = (image_url,id_annonce)=> async dispatch =>{
     console.log("welcome in getcontact")
     if(localStorage.getItem('access')){
       console.log("user have an access")
@@ -77,7 +77,7 @@ export const loadImages = (image_url,id_annonce)=> async dispatch =>{
         console.log("create loading image form")
         form_data.append("image_url",image_url,image_url.name);
         form_data.append("id_annonce",id_annonce);
-        const res =await axios.post(`${process.env.REACT_APP_API_URL}/api/annonces/loadimages/`,form_data,config)
+        const res =await axios.post(`${process.env.REACT_APP_API_URL}/api/annonces/loadimage/`,form_data,config)
         console.log(res)
       }else{
         console.log("you have not selected any image")
@@ -196,3 +196,25 @@ export const DeleteAnnonce=()=>async dispatch =>{
   }
 }
 
+export const getUserAnnonces = ()=> async dispatch =>{
+  console.log("welcome in getcontact")
+  if(localStorage.getItem('access')){
+    console.log("user have an access")
+    const config ={
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':`JWT ${localStorage.getItem('access')}`
+        }
+    };
+    try{
+        const res = await axios.get(`http://127.0.0.1:8000/api/annonces/mesannonces/`,config);
+        console.log(res.data)
+    }catch (err){
+        console.log("getting contacts of user fail ")
+    }
+  }else{
+    dispatch({
+      type:LOGIN_FAIL
+  })
+  }
+};

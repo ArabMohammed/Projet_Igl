@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Profil.css'
-
-function Profil(){
+import { connect } from "react-redux";
+import { getListWilayasCommunes } from "../actions/localisation";
+function Profil({user , wilayas_communes}){
 
     const [formData, setFormData] = useState({
         firstname: '',
@@ -16,8 +17,22 @@ function Profil(){
         phoneNumber: ''
     })
 
-    const wilayaList = ["Tlemcen", "Alger", "Annaba"];
+    const wilayaList = [];
     const communeList = ["Hennaya", "Remchi", "Mansourah"];
+    
+    const wilayas=wilayas_communes["wilayas"]
+    console.log("wilayas : "+wilayas)
+    for(let i=0; i<wilayas.length; i++){
+        wilayaList.push(wilayas[i].nom)
+    }
+
+
+    useEffect(()=>{ 
+         console.log(wilayas_communes);
+         console.log('le user est : ' + user)
+    }, [])
+
+
 
     function handleChange(event){
         setFormData((prevData) => {
@@ -145,5 +160,8 @@ function Profil(){
     )
 
 }
-
-export default Profil;
+const mapState = state => ({
+    user: state.auth.user,
+    wilayas_communes :state.auth.wilayas_communes
+})
+export default connect(mapState) (Profil);

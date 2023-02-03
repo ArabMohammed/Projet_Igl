@@ -18,6 +18,7 @@ import {
     LOGOUT,
     GOOGLE_AUTH_SUCCESS,
     GOOGLE_AUTH_FAIL,
+    LOAD_WILAYA_COMMUNES,
   }from './types'
 /************************************************************ */
 export const getUserLocalisations = ()=> async dispatch =>{
@@ -112,11 +113,16 @@ export const UpdateLocalisation = ()=> async dispatch =>{
           }
       };
       try{
-          const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/localisation/dict_wilayas_communes/`,config);
+          const res = await axios.get(`http://127.0.0.1:8000/api/localisation/dict_wilayas_communes/`,config);
           console.log(res.data)
           console.log("\n\n")
           console.log(res.data["wilayas"][0])
           console.log(res.data["wilayas"][0].nom)
+          dispatch({
+            type:LOAD_WILAYA_COMMUNES,
+            payload:res.data,
+          });
+
       }catch (err){
           console.log("receiving of wilayas and communes list fails")
       }

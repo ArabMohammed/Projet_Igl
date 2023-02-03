@@ -15,6 +15,7 @@ import ResetPassword from './pages/ResetPassword';
 import Google from './pages/Google';
 import ResetPasswordConfirm from './pages/ResetPasswordConfirm';
 import Activate from './pages/Activate';
+import { Accueil } from './pages/Accueil';
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
   return (
     <div className='App'>
       <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Accueil />} />
           <Route path='/aide' element={<About />} />
           <Route path='/compte' element={<Account />} />
           <Route path='/compte/infopersonnelles' element={<AccountInfo />}></Route>

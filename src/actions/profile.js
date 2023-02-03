@@ -22,7 +22,7 @@ export const updateProfileImage = (image_url)=> async dispatch =>{
         console.log(image_url.name)
         form_data.append("image_url",image_url,image_url.name);
         console.log("success")
-        const res =await axios.put(`${process.env.REACT_APP_API_URL}/accounts/profilimage/update/`,form_data,config)
+        const res =await axios.put(`${process.env.REACT_APP_API_URL}/accounts/me/profilimage/update/`,form_data,config)
         console.log(res.data)
       }else{
         console.log("you have not selected any image")
@@ -45,6 +45,7 @@ export const updateProfile=()=> async dispatch=>{
               'Authorization':`JWT ${localStorage.getItem('access')}`
           }
      };
+     const date_naissance = new DateObject("2002/12/07");
      const profile={
         "nom":"seddiki",
         "prenom":"abdessamed",
@@ -52,7 +53,7 @@ export const updateProfile=()=> async dispatch=>{
         "numero_telephone":"07485523",
         "wilaya":1,
         "commune":1,
-        "adresse":"rue wilaya bachar n50",
+        "date_naissance": date_naissance.format("YYYY-MM-DD")
      }
      const form_data=JSON.stringify(profile);
      const res =await axios.put(`${process.env.REACT_APP_API_URL}/accounts/me/updateprofile/`,form_data,config)

@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import {AdsList} from "./AdsList";
 
 function AdCard(props){
+    console.log("info annonce")
+    console.log(props.src)
+    const source = `http://127.0.0.1:8000/api/annonces/${props.src}/images/1`;
     return(
         <>
         <div className="box-ad">
             <div className="image-ac">
-                <img src="/images/video-immobilier.jpg" alt="immage-immobilier" />
+                <img src={source} alt="immage-immobilier" />
                 {props.isNegotiable && <p className="nego-ac">Négociable</p>}
                 <div className="info-num-ac">
                     <p>{props.price}</p>
@@ -22,7 +25,7 @@ function AdCard(props){
             </div>
             <hr />
             <div className="down-info-ac">
-                <p><i class="fa-regular fa-user"></i>{props.owner}</p>
+                <p><i class="fa-regular fa-user"></i></p>
                 <p><i class="fa-sharp fa-solid fa-calendar-week"></i>{props.date}</p>
             </div>
         </div>

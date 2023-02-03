@@ -3,35 +3,33 @@ import { useLocation } from "react-router";
 import './AdDetails.css'
 
 function AdDetails(props){
-    const location = useLocation();
     return(
         <>
             <div className="box-container-ad-details">
-                <h2>Maison Luxe à vendre</h2>
-                <p className="span">Prix: § 756.885</p>
-                <p className="span2"><i class="fa-sharp fa-solid fa-location-dot"></i> 356 Webber street, Washignton</p>
+                <h2>{props.titre}</h2>
+                <p className="span">Prix: {props.unite_prix} {props.prix}</p>
+                <p className="span2"><i class="fa-sharp fa-solid fa-location-dot"></i> {props.adresse_bien_immobilier}</p>
 
                 <div className="images-ad-details">
-                    <img src='' alt='image-immobilier' />
-                    <img src='' alt='image-immobilier' />
-                    <img src='' alt='image-trois' />
-                    <img src='' alt='image-quatre' />
+                    <img src='/images/video-immobilier.jpg' alt='image-immobilier' />
+                    <img src='/images/video-immobilier.jpg' alt='image-immobilier' />
+                    <img src='/images/video-immobilier.jpg' alt='image-trois' />
+                    <img src='/images/video-immobilier.jpg' alt='image-quatre' />
                 </div>
                 <div className="bottom-ad-details">
                     <div className="left-div-ad-details">
                         <div className="description-ad-details">
                             <h3>Description</h3>
                             <hr />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere</p>
+                            <p>{props.description}</p>
                         </div>
                         <div className="bref-resume-ad-details">
                             <h3>Résumé</h3>
                             <hr />
-                            <p>Catégorie: </p> <br />
-                            <p>Type du bien: </p> <br />
+                            <p>Catégorie: {props.categorie}</p> <br />
+                            <p>Type du bien:{props.type} </p> <br />
                             <p>Nombre de pièces: </p> <br />
-                            <p>Surface: </p> <br />
-                            <p>Négociable </p> <br />
+                            <p>Surface: {props.surface}</p> <br />
                         </div>
                     </div>
 
