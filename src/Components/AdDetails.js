@@ -8,6 +8,11 @@ import { useEffect } from "react";
 
 function AdDetails(props){
 
+    const src1 =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/1`
+    const src2 =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/2`
+    const src3 =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/3`
+    const src4 =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/4`
+
     const [contacts, setContacts] = useState([])
     const getContactId=()=>async dispatch =>{
         if(localStorage.getItem('access')){
