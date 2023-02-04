@@ -2,11 +2,12 @@ import React from "react";
 import './AdCard.css';
 import { Link } from "react-router-dom";
 import {AdsList} from "./AdsList";
+import { connect } from "react-redux";
 
 function AdCard(props){
     console.log("info annonce")
     console.log(props.src)
-    const source = `http://127.0.0.1:8000/api/annonces/${props.src}/images/1`;
+    const source =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/1`;
     return(
         <>
         <div className="box-ad">
@@ -25,7 +26,7 @@ function AdCard(props){
             </div>
             <hr />
             <div className="down-info-ac">
-                <p><i class="fa-regular fa-user"></i></p>
+                <p><i class="fa-regular fa-user"></i>{props.utilisateurNom} {props.utilisateurPrenom}</p>
                 <p><i class="fa-sharp fa-solid fa-calendar-week"></i>{props.date}</p>
             </div>
         </div>

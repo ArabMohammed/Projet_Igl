@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import './Profil.css'
 import { connect } from "react-redux";
 import { getListWilayasCommunes } from "../actions/localisation";
-function Profil(){
+import { updateProfile } from "../actions/profile";
+import {load_user} from '../actions/auth'
+
+function Profil({updateProfile,load_user}){
     const user=JSON.parse(localStorage.getItem('user'))
     //console.log("welcome user")
-    /*console.log(user)*/
+    //console.log(user)
     const [formData, setFormData] = useState({
         firstName:user.prenom,
         lastName:user.nom,
@@ -13,14 +16,18 @@ function Profil(){
         userName:'',
         email:user.email,
         password: '',
-        birthDay: '',
-        wilaya: '',
-        commune: '',
-        phoneNumber: '+213 '
+        birthDay: user.date_naissance,
+        wilaya:String(user.wilaya),
+        commune:String(user.commune),
+        phoneNumber:user.numero_telephone,
     })
 
-    const[value, setValue]= useState(-1)
-
+    const[value, setValue]= useState(user.wilaya)
+    console.log("welcome now")
+    console.log(user.wilaya)
+    console.log(user.email)
+    console.log(user.commune)
+    //setValue(formData.wilaya)
     //console.log("value du debut" + formData.firstName)
 
     const wilayaList = []
@@ -36,11 +43,25 @@ function Profil(){
     for(let i=0; i<wilayas.length; i++){
         wilayaList.push(wilayas[i].nom)
     }
+    let wilayaActuel="Wilaya" ;
+    for(let i=0; i<wilayas.length; i++){
+        if(wilayas[i].pk==formData.wilaya){
+            wilayaActuel=wilayas[i].nom
+        }
+    }
+    console.log("commune : "+formData.commune)
+    let communeActuel="Commune" ;
+    for(let i=0; i<communes.length; i++){
+        if(communes[i].pk==formData.commune){
+            communeActuel=communes[i].nom
+        }
+    }
     /*console.log("wilaya list :")
     console.log(wilayaList)*/
 
 
     function handleChange(event){
+       // console.log(event.target.value)
         setFormData((prevData) => {
             return {...prevData, 
                 [event.target.name] : [event.target.value]
@@ -97,8 +118,13 @@ function Profil(){
         })
     }
 
-
-
+    function update(e){
+        e.preventDefault()
+        console.log(formData);
+        const {firstName,lastName, userName, email, password, birthDay, wilaya, commune, phoneNumber} = formData
+        updateProfile(firstName,lastName, email, phoneNumber[0], Number(wilaya[0])+1, Number(commune[0]), birthDay)
+        load_user()
+    }
 
 
     return(
@@ -175,7 +201,7 @@ function Profil(){
                         <div className="input-fieled-profil">
                             <label htmlFor="birthDate">Date de naissance</label>
                             <input type="date"
-                                   name="date"
+                                   name="birthDay"
                                    id="date"
                                    value={formData.birthDay}
                                    onChange={handleChange}
@@ -184,7 +210,7 @@ function Profil(){
                         <div className="input-fieled-profil">
                             <label htmlFor="wilayaList">Wilaya</label>
                             <select id="wilayaList" onChange={handleChangeWilaya} name='wilaya'>
-                                <option value='' name="wilaya">Wilaya</option>
+                                <option value='' name="wilaya">{wilayaActuel}</option>
                             {
                                 wilayaList.map((item, index) => {
                                     return(
@@ -196,8 +222,8 @@ function Profil(){
                         </div>
                         <div className="input-fieled-profil">
                         <label htmlFor="communeList">Commune</label>
-                        <select id="communeList" onChange={handleChangeCommune}>
-                            <option name="commune">Commune</option>
+                        <select id="communeList" onChange={handleChangeCommune} name="commune">
+                            <option name="commune">{communeActuel}</option>
                             {
                                 communeList.map((item, index) => {
                                     return(
@@ -218,7 +244,8 @@ function Profil(){
                         </div>
                         <input type="submit" 
                                value="Modifier les informations"
-                               className="button-submit-profil" />
+                               className="button-submit-profil"
+                               onClick={update} />
                     </form>
                 </div>
             </div>
@@ -226,4 +253,4 @@ function Profil(){
     )
 
 }
-export default connect() (Profil)
+export default connect(null,{updateProfile,load_user}) (Profil)

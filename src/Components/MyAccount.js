@@ -8,11 +8,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { connect } from "react-redux";
 
-function MyAccount(){
+function MyAccount({user}){
     const [ads, setAds] = useState([]);
     let obj = {}
-
+    
     let i = 0, j = 0;
     const navigate = useNavigate();
     function clickHandler(item){
@@ -25,7 +26,7 @@ function MyAccount(){
                         titre: item.titre,
                         prix: item.prix,
                         surface: item.surface,
-                        adress: item.adresse_bien_immobilier,
+                        adresse_bien_immobilier: item.adresse_bien_immobilier,
                         date : item.date_publication,
                         src: item.pk,
                         description: item.description,
@@ -102,7 +103,7 @@ function MyAccount(){
                                     titre: item.titre,
                                     prix: item.prix,
                                     surface: item.surface,
-                                    adress: item.adresse_bien_immobilier,
+                                    adresse_bien_immobilier: item.adresse_bien_immobilier,
                                     date : item.date_publication,
                                     src: item.pk,
                                     description: item.description,
@@ -113,20 +114,24 @@ function MyAccount(){
                                     commune: item.commune,
                                     unite: item.unite_prix,
 
+
                                 }
                                 
                                 return(
                                     <div onClick={() => clickHandler(obj)}>
                                         {console.log("Les info avant passage : " + obj.titre )}
-                                        <AdCard 
-                                        key={item.pk}
-                                        title={item.titre}
-                                        price={item.prix}
-                                        surface={item.surface}
-                                        adress={item.adresse_bien_immobilier}
-                                        date={item.date_publication}
-                                        isNegotiable={false}
-                                        src={item.pk}
+                                            <AdCard 
+                                            key={item.pk}
+                                            title={item.titre}
+                                            price={item.prix}
+                                            surface={item.surface}
+                                            adress={item.adresse_bien_immobilier}
+                                            date={item.date_publication}
+                                            isNegotiable={false}
+                                            src={item.pk}
+                                            utilisateurNom={user.nom}
+                                            utilisateurPrenom={user.prenom}
+
                                         />
                                      </div>
                                 )
@@ -142,4 +147,8 @@ function MyAccount(){
     )
 }
 
-export default MyAccount
+const mapState = state => ({
+    user: state.auth.user
+  })
+export default connect(mapState) (MyAccount)
+

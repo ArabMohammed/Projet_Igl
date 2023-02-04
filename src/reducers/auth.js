@@ -66,7 +66,7 @@ export default function(state = initialState, action) {
             }
         case LOAD_WILAYA_COMMUNES:
             localStorage.setItem('wilayas_communes',JSON.stringify(payload));
-            console.log(localStorage.getItem('wilayas_communes'))
+           // console.log(localStorage.getItem('wilayas_communes'))
             return {
                 ...state,
                 wilayas_communes:payload

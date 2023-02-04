@@ -60,9 +60,6 @@ function Navbar({logout, isAuthentificated}){
                         <i class="fa-solid fa-plus"></i>
                         <span class="dep-text-navbar">Déposer Annonce</span>
                     </button>
-                    <button class="button-sedeconnecter-navbar">
-                        <i class="fas fa-bars"></i>
-                    </button>
             </div>
         </nav>
         </>

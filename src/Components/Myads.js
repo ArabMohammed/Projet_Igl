@@ -20,6 +20,8 @@ function Myads({user}){
 
     let obj = {}
 
+
+
     const navigate = useNavigate();
     function clickHandler(item){
         console.log("state dans use navigate : ", item);
@@ -31,7 +33,7 @@ function Myads({user}){
                         titre: item.titre,
                         prix: item.prix,
                         surface: item.surface,
-                        adress: item.adresse_bien_immobilier,
+                        adresse_bien_immobilier: item.adresse_bien_immobilier,
                         date : item.date_publication,
                         src: item.pk,
                         description: item.description,
@@ -85,7 +87,7 @@ function Myads({user}){
             <div className="top-my-ads">
                 <div className="top-title-my-ads">
                     <h1>Mon Compte</h1>
-                    <h2>Mon profil  Mes annonces</h2>
+                    <h2>Mes annonces</h2>
                 </div>
             </div>
             
@@ -98,7 +100,7 @@ function Myads({user}){
                                     titre: item.titre,
                                     prix: item.prix,
                                     surface: item.surface,
-                                    adress: item.adresse_bien_immobilier,
+                                    adresse_bien_immobilier: item.adresse_bien_immobilier,
                                     date : item.date_publication,
                                     src: item.pk,
                                     description: item.description,

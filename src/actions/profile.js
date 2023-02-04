@@ -35,8 +35,7 @@ export const updateProfileImage = (image_url)=> async dispatch =>{
     }
   };
 
-export const updateProfile=()=> async dispatch=>{
-    console.log("welcome in getcontact")
+export const updateProfile=(nom, prenom, email, numro_telephone, wilaya, commune, date_naiss)=> async dispatch=>{
     if(localStorage.getItem('access')){
       console.log("user have an access")
       const config ={
@@ -45,16 +44,19 @@ export const updateProfile=()=> async dispatch=>{
               'Authorization':`JWT ${localStorage.getItem('access')}`
           }
      };
-     const date_naissance = new DateObject("2002/12/07");
+     const date_naissance = new DateObject(date_naiss);
+     console.log(date_naissance.format("YYYY-MM-DD"))
+     console.log(nom+" "+prenom+" "+email+" "+numro_telephone+" "+wilaya+" "+commune+" "+date_naiss)
      const profile={
-        "nom":"seddiki",
-        "prenom":"abdessamed",
-        "email":"ka_seddiki@esi.dz",
-        "numero_telephone":"07485523",
-        "wilaya":1,
-        "commune":1,
+        "nom": nom,
+        "prenom": prenom,
+        "email": email,
+        "numero_telephone":numro_telephone,
+        "wilaya": wilaya,
+        "commune":commune,
         "date_naissance": date_naissance.format("YYYY-MM-DD")
      }
+     
      const form_data=JSON.stringify(profile);
      const res =await axios.put(`${process.env.REACT_APP_API_URL}/accounts/me/updateprofile/`,form_data,config)
      console.log(res.data)

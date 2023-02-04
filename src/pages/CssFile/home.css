@@ -97,7 +97,9 @@ input[type="date"],
   color: #cc935c;
   background-color: rgb(29, 27, 27);
 }
-input[type="submit"]:hover {
+
+/* there was a modification */
+#sub:hover {
   cursor: pointer;
   color: #cc935c;
   background-color: rgb(29, 27, 27);

@@ -8,7 +8,6 @@ function AccountInfo(){
     const userName = "Seddiki Mohamed Houssem Edine";
     return (
         <>
-            <Navbar />
             <Profil />
             <Footer />
         </>

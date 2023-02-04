@@ -9,12 +9,11 @@ function AdConsult(){
     console.log("location + " , location)
     return(
         <>
-            <Navbar />
             <AdDetails
              titre = {location.state.titre}
              prix = {location.state.prix}
              surface= {location.state.surface}
-             adress={ location.state.adresse_bien_immobilier}
+             adresse_bien_immobilier={ location.state.adresse_bien_immobilier}
              date = {location.state.date_publication}
              src= {location.state.pk}
              description= {location.state.description}

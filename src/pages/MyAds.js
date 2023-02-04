@@ -7,7 +7,6 @@ import Footer from "../Components/Footer";
 function MyAds(){
     return (
         <>
-            <Navbar />
             <Myads />
             <Footer />
         </>
