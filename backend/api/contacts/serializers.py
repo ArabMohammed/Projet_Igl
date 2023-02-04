@@ -11,4 +11,3 @@ class ContactSerializer(serializers.ModelSerializer):
            'commune',
            'numero_telephone'
         ]
-

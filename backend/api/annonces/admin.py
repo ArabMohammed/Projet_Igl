@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Annonce
+from .models import Annonce,ImageAnnonce
 
 admin.site.register(Annonce)
-
-# Register your models here.
+admin.site.register(ImageAnnonce)

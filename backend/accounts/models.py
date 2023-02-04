@@ -4,6 +4,9 @@ from django.contrib.auth.models import (
     PermissionsMixin,
     BaseUserManager
 )
+from api.localisation.models import Wilaya , Commune
+from api.contacts.models import Contact
+from django.utils  import timezone
 class UserAccountManager(BaseUserManager):
     def create_user(self,email,prenom,nom,password=None,**extra_fields):
         if not email:
@@ -16,7 +19,15 @@ class UserAccountManager(BaseUserManager):
         user=self.model(email=email,prenom=prenom,nom=nom,**extra_fields)
         user.set_password(password)
         user.save(using=self._db)
-        print("\n\n welcome in user creation \n\n")
+        ############creation du contact d'utilisateur#############
+        print("\n")
+        print("\n")
+        print(f'result: {user.pk}')
+        print("\n")
+        print("\n")
+        contact = Contact(nom=nom+" "+prenom,email=email,utilisateur_id=user.pk)
+        contact.save()
+        print("\n\n welcome in user creation an his contact creation \n\n")
         return user 
     def create_superuser(self,email,prenom,nom,password=None, **extra_fields):
         if not email:
@@ -48,8 +59,15 @@ class UserAccount(AbstractBaseUser,PermissionsMixin):
     is_superuser= models.BooleanField(default=False)
     is_admin= models.BooleanField(default=False)
     profile_image= models.ImageField(max_length=255, upload_to=get_profile_image_filepath, null=True, blank=True,)
+    
+    ############################
+    date_naissance=models.DateField(default=timezone.now, blank=True)
+    wilaya = models.ForeignKey(Wilaya,on_delete=models.PROTECT,blank=True,null=True)
+    commune = models.ForeignKey(Commune,on_delete=models.PROTECT,blank=True,null=True)
+    numero_telephone=models.CharField(max_length=15,blank=True,null=True)
+    #############################
+    
     objects = UserAccountManager()
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS= ['prenom','nom']
     
@@ -67,5 +85,3 @@ class UserAccount(AbstractBaseUser,PermissionsMixin):
     # Does this user have permission to view this app? (ALWAYS YES FOR SIMPLICITY)
     def has_module_perms(self, app_label):
         return True
-
-# Create your models here.

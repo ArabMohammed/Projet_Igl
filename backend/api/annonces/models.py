@@ -32,35 +32,36 @@ class Annonce(models.Model):
         MILLIARD_CENTIME='Milliard centime',_('Milliard centime')
         DA_m2='DA par m2',('DA par m2')
         MILLION_CENTIME_m2='Million par m2',('Million par m2')
-    titre=models.CharField(max_length=400,blank=False)
+    titre=models.CharField(max_length=400,blank=True,null=True)
 
     id_utilisateur=models.ForeignKey(UserAccount,on_delete=models.PROTECT)
 
     description=models.TextField()
-    prix=models.CharField(max_length=20)
-    surface=models.CharField(max_length=20)
-    date_publication=models.DateField(default=timezone.now, blank=False)
+    prix=models.CharField(max_length=20,blank=True,null=True)
+    surface=models.CharField(max_length=20,blank=True,null=True)
+    date_publication=models.DateField(default=timezone.now,blank=True,null=True)
    
-    categorie_immobilier = models.CharField(max_length=25,choices=Categorie.choices,default=Categorie.VENTE)
-    type_immobilier=models.CharField(max_length=25,choices=Type.choices,default=Type.APPARTEMENT)
-    unite_prix=models.CharField(max_length=25,choices=UnitePrix.choices,default=UnitePrix.DA)
+    categorie_immobilier = models.CharField(max_length=25,choices=Categorie.choices,default=Categorie.VENTE,blank=True,null=True)
+    type_immobilier=models.CharField(max_length=25,choices=Type.choices,default=Type.APPARTEMENT,blank=True,null=True)
+    unite_prix=models.CharField(max_length=25,choices=UnitePrix.choices,default=UnitePrix.DA,blank=True,null=True)
    
-    contact = models.ForeignKey(Contact,on_delete=models.PROTECT)
-    wilaya = models.ForeignKey(Wilaya,on_delete=models.PROTECT)
-    commune = models.ForeignKey(Commune,on_delete=models.PROTECT)
-    adresse_bien_immobilier=models.CharField(max_length=200)
+    contact = models.ForeignKey(Contact,on_delete=models.PROTECT,blank=True,null=True)
+    wilaya = models.ForeignKey(Wilaya,on_delete=models.PROTECT,blank=True,null=True)
+    commune = models.ForeignKey(Commune,on_delete=models.PROTECT,blank=True,null=True)
+    adresse_bien_immobilier=models.CharField(max_length=200,blank=True,null=True)
     id_immobilier = models.UUIDField(default=uuid.uuid4, editable=False)
     #localisation=models.ForeignKey(Localisation,on_delete=models.PROTECT)
     
-    vendu=models.BooleanField(default=False)
-    public = models.BooleanField(default=False)
+    vendu=models.BooleanField(default=False,blank=True,null=True)
+    public = models.BooleanField(default=False,blank=True,null=True)
+    obtenu_webscraping=models.BooleanField(default=False)
 
-    parking=models.BooleanField(default=False)
-    terrasse=models.BooleanField(default=False)
-    garage=models.BooleanField(default=False)
-    meuble=models.BooleanField(default=False)
-    eau=models.BooleanField(default=False)
-    gaz=models.BooleanField(default=False)
+    parking=models.BooleanField(default=False,blank=True,null=True)
+    terrasse=models.BooleanField(default=False,blank=True,null=True)
+    garage=models.BooleanField(default=False,blank=True,null=True)
+    meuble=models.BooleanField(default=False,blank=True,null=True)
+    eau=models.BooleanField(default=False,blank=True,null=True)
+    gaz=models.BooleanField(default=False,blank=True,null=True)
     electricite=models.BooleanField(default=False)
 
 
@@ -78,13 +79,4 @@ def upload_to(self,filename):
 class ImageAnnonce(models.Model):
     image_url = models.ImageField(upload_to=upload_to, blank=True, null=True)
     id_annonce=models.ForeignKey(Annonce,on_delete=models.CASCADE)
-    '''
-    def update_model(self):
-        image_id=self.pk 
-        annonce_id=self.id_annonce
-        image_url='annoncesImages/'+str(annonce_id)+'/'+str(image_id)
-        ImageAnnonce.objects.filter(id=image_id).update(image_url=image_url)
-    def save(self,*args,**kwargs):
-        super(ImageAnnonce,self).save(*args,**kwargs)
-        self.update_model()
-    '''
+

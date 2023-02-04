@@ -5,8 +5,8 @@ from django.conf.urls.static import static
 #accounts/
 urlpatterns = [
     path('register',RegisterView.as_view()),
-    path('me', RetrieveUserView.as_view()),
+    path('me/', RetrieveUserView.as_view()),
     path('me/updateprofile/', ProfileUpdateAPIView.as_view()),
-    path('<id>/profileimage',GetImageProfileAPIView.as_view()),
-    path('profilimage/update/',ImageProfileUpdateAPIView.as_view()),
+    path('<id>/profileimage/',GetImageProfileAPIView.as_view()),
+    path('me/profilimage/update/',ImageProfileUpdateAPIView.as_view()),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
