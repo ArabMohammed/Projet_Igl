@@ -19,23 +19,30 @@ import {
 const initialState ={
    access: localStorage.getItem('access'),
    refresh: localStorage.getItem('refresh'),
-   isAuthenticated:null,
-   user : null,
-   wilayas_communes:null ,
+   //isAuthenticated:localStorage.getItem('isAuthenticated'),
+   isAuthenticated:false,
+   user : localStorage.getItem('user'),
+   wilayas_communes:localStorage.getItem('wilayas_communes') ,
 }
 
 export default function(state = initialState, action) {
     const { type, payload} = action;
+    console.log("welcome in reducers page")
+    console.log(type)
     switch(type) {
         case AUTHENTIFICATED_SUCCESS:
+            console.log("welcome in reducers 1")
+            //localStorage.setItem('isAuthenticated',true)
             return {
                 ...state,
-                isAuthenticated: true
+                isAuthenticated: true,
             }
         case LOGIN_SUCCESS:
         case GOOGLE_AUTH_SUCCESS:
+            console.log("welcome in reducers 2")
             localStorage.setItem('access', payload.access);
             localStorage.setItem('refresh', payload.refresh);
+            //localStorage.setItem('isAuthenticated',true)
             return {
                 ...state,
                 isAuthenticated: true,
@@ -43,28 +50,37 @@ export default function(state = initialState, action) {
                 refresh: payload.refresh
             }
         case SIGNUP_SUCCESS:
+            console.log("welcome in reducers 3")
+            //localStorage.setItem('isAuthenticated',false)
             return {
                 ...state,
                 isAuthenticated: false
             }
         case LOAD_USER_SUCCESS:
+            console.log("welcome in reducers 4")
+            console.log("uploading user")
+            localStorage.setItem('user',JSON.stringify(payload))
             return {
                 ...state,
                 user: payload
             }
         case LOAD_WILAYA_COMMUNES:
-            console.log("uploading wilayas and communes")
-            console.log(payload)
+            localStorage.setItem('wilayas_communes',JSON.stringify(payload));
+            console.log(localStorage.getItem('wilayas_communes'))
             return {
                 ...state,
-                wilayas_communes: payload
+                wilayas_communes:payload
             }
         case AUTHENTIFICATED_FAIL:
+            console.log("welcome in reducers 5")
+            //localStorage.setItem('isAuthenticated',false)
             return {
                 ...state,
                 isAuthenticated: false
             }
         case LOAD_USER_FAIL:
+            console.log("welcome in reducers 6")
+            localStorage.setItem('user',null)
             return {
                 ...state,
                 user: null
@@ -73,8 +89,10 @@ export default function(state = initialState, action) {
         case LOGIN_FAIL:
         case SIGNUP_FAIL:
         case LOGOUT:
+            console.log("welcome in reducers 7")
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
+            //localStorage.setItem('isAuthenticated',false);
             return {
                 ...state,
                 access: null,
@@ -88,11 +106,15 @@ export default function(state = initialState, action) {
         case PASSWORD_RESET_CONFIRM_FAIL:
         case ACTIVATION_SUCCESS:
         case ACTIVATION_FAIL:
+            console.log("welcome in reducers 8")
             return {
                 ...state
             }
         default:
-            return state
+            console.log("welcome in reducers 9")
+            return {
+                 ...state 
+             }
     }
 };
 /*

@@ -218,3 +218,29 @@ export const getUserAnnonces = ()=> async dispatch =>{
   })
   }
 };
+export const uploadScrapedAnnonces=()=>async dispatch =>{
+  if(localStorage.getItem('access')){
+    console.log("user have an access to research annonce")
+    const config ={
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':`JWT ${localStorage.getItem('access')}`
+        }
+    };
+    const params = new URLSearchParams([
+      ['type',['Appartement']],
+      ['categorie',['Vente']],
+      ['site_annonce','http://www.annonce-algerie.com/'],
+    ]);
+    try{
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/annonces/uploadscrapedannonces/`,{params},config);
+        console.log(res.data)
+    }catch (err){
+        console.log("create a new contact fail ")
+    }
+  }else{
+    dispatch({
+      type:LOGIN_FAIL
+  })
+  }
+};

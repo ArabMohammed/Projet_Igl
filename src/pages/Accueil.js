@@ -1,11 +1,26 @@
 import "./CssFile/home.css";
 import AdCard from "../Components/AdCard";
-export const Accueil = () => {
-  return (
+import { connect } from "react-redux";
+import {uploadScrapedAnnonces} from '../actions/annonces'
+import Navbar from "../Components/Navbar";
+function Accueil ({user ,uploadScrapedAnnonces}){
+  let last_name="";
+    let first_name ="";
+    if(user!==null){
+     console.log(user)
+     first_name=user.prenom
+     last_name=user.nom
+    }
+    else{
+      console.log("user is null")
+    }
+    return (
+      
     <container>
-      {" "}
+
       <section id="section01">
         <p id="p1">
+          <h1>welcome {first_name} {last_name}</h1>
           <span>Meilleur</span> Affaire <span>Immobiliére</span>
         </p>
         <p id="p2">
@@ -167,7 +182,7 @@ export const Accueil = () => {
       <br></br>
       
       </div>
-      <button id="plus">Voir Plus</button>
+      <button id="plus" >Voir Plus</button>
       <footer>
         <div id="f1">
           DzEstates <br />
@@ -188,5 +203,9 @@ export const Accueil = () => {
         </div>
       </footer>
     </container>
-  );
-};
+  )
+}
+const mapState = state => ({
+  user: state.auth.user
+})
+export default connect(mapState ,{uploadScrapedAnnonces}) (Accueil)

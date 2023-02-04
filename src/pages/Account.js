@@ -5,7 +5,6 @@ import MyAccount from "../Components/MyAccount";
 function Account(){
     return (
         <>
-            <Navbar />
             <MyAccount />
             <Footer />
         </>

@@ -1,37 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './Profil.css'
 import { connect } from "react-redux";
 import { getListWilayasCommunes } from "../actions/localisation";
-function Profil({user , wilayas_communes}){
-
+function Profil(){
+    const user=JSON.parse(localStorage.getItem('user'))
+    //console.log("welcome user")
+    /*console.log(user)*/
     const [formData, setFormData] = useState({
-        firstname: '',
-        lastNAme:'',
+        firstName:user.prenom,
+        lastName:user.nom,
         image:'',
         userName:'',
-        email: '',
+        email:user.email,
         password: '',
         birthDay: '',
         wilaya: '',
         commune: '',
-        phoneNumber: ''
+        phoneNumber: '+213 '
     })
 
-    const wilayaList = [];
-    const communeList = ["Hennaya", "Remchi", "Mansourah"];
-    
+    const[value, setValue]= useState(-1)
+
+    //console.log("value du debut" + formData.firstName)
+
+    const wilayaList = []
+    const communeList = []
+
+    const wilayas_communes=JSON.parse(localStorage.getItem('wilayas_communes'))
+    //console.log("list wilaya communes : "+wilayas_communes)
+   
     const wilayas=wilayas_communes["wilayas"]
-    console.log("wilayas : "+wilayas)
+    const communes = wilayas_communes["communes"]
+    //console.log("Les communes sont + ", communes)
+
     for(let i=0; i<wilayas.length; i++){
         wilayaList.push(wilayas[i].nom)
     }
-
-
-    useEffect(()=>{ 
-         console.log(wilayas_communes);
-         console.log('le user est : ' + user)
-    }, [])
-
+    /*console.log("wilaya list :")
+    console.log(wilayaList)*/
 
 
     function handleChange(event){
@@ -40,8 +46,60 @@ function Profil({user , wilayas_communes}){
                 [event.target.name] : [event.target.value]
             }
         })
+        console.log('value de fromdata 1  = ' + formData.phoneNumber)
+    }
+
+    /*const handleChange = e => setFormData({
+        ...formData, [e.target.name] : [e.target.value]
+    })*/
+
+    
+    function handleChangeWilaya(event){
+        setValue(Number([event.target.value]) + 1)
+        let numWilaya = Number([event.target.value]) + 1
+        console.log(" la valeur est"+numWilaya)
+        setFormData((prevData) => {
+            return {...prevData, 
+                [event.target.name] : [event.target.value]
+            }
+        })
+
+
+        for(let i=0; i<communes.length; i++){
+
+            if(Number(communes[i].wilaya) === numWilaya){
+                communeList.push(communes[i].nom)
+            }
+        }
+
+        for(let i=0; i<communeList.length; i++){
+
+                console.log((communeList[i]))
+            
+        }
 
     }
+
+    for(let i=0; i<communes.length; i++){
+
+        if(Number(communes[i].wilaya) === value){
+            communeList.push(communes[i])
+        }
+    }
+
+    function handleChangeCommune(event){
+        let numComm = Number([event.target.value]) + 1
+        console.log(" la valeur est"+numComm)
+        setFormData((prevData) => {
+            return {...prevData, 
+                [event.target.name] : [event.target.value]
+            }
+        })
+    }
+
+
+
+
 
     return(
         <>
@@ -64,7 +122,8 @@ function Profil({user , wilayas_communes}){
                                     id="image"
                                     alt="Login"
                                     src="/images/user-solid.svg"
-                                    className="img-form" />
+                                    className="img-form"
+                                     />
                             </div>
                             <div>
                                 <div className="input-fieled-profil">
@@ -73,7 +132,8 @@ function Profil({user , wilayas_communes}){
                                         type="text"
                                         placeholder=""
                                         onChange={handleChange}
-                                        name="firstName"/>
+                                        name="firstName"
+                                        value={formData.lastName}/>
                                 </div>
                                 <div className="input-fieled-profil">
                                     <label htmlFor="lastName">Prénom</label>
@@ -81,7 +141,8 @@ function Profil({user , wilayas_communes}){
                                         type="text"
                                         placeholder=""
                                         onChange={handleChange}
-                                        name="lastName"/>
+                                        name="lastName"
+                                        value={formData.firstName}/>
                                 </div>
                                 <div className="input-fieled-profil">
                                     <label htmlFor="userName">Nom d'utilisateur</label>
@@ -100,7 +161,8 @@ function Profil({user , wilayas_communes}){
                             <input id="email"
                                    type="email" placeholder=""
                                    onChange={handleChange}
-                                   name="email"/>
+                                   name="email"
+                                   value={formData.email}/>
                         </div>
                         <div className="input-fieled-profil">
                             <label htmlFor="password">Mot de passe</label>
@@ -114,16 +176,19 @@ function Profil({user , wilayas_communes}){
                             <label htmlFor="birthDate">Date de naissance</label>
                             <input type="date"
                                    name="date"
-                                   id="date"></input>
+                                   id="date"
+                                   value={formData.birthDay}
+                                   onChange={handleChange}
+                                   ></input>
                         </div>
                         <div className="input-fieled-profil">
                             <label htmlFor="wilayaList">Wilaya</label>
-                            <select id="wilayaList">
-                                <option value="">Wilaya</option>
+                            <select id="wilayaList" onChange={handleChangeWilaya} name='wilaya'>
+                                <option value='' name="wilaya">Wilaya</option>
                             {
                                 wilayaList.map((item, index) => {
                                     return(
-                                        <option key={index} value={item}>{item}</option>
+                                        <option name='wilaya' key={index} value={index}>{item}</option>
                                     )
                                 })
                             }
@@ -131,12 +196,12 @@ function Profil({user , wilayas_communes}){
                         </div>
                         <div className="input-fieled-profil">
                         <label htmlFor="communeList">Commune</label>
-                        <select id="communeList">
-                            <option value="">Commune</option>
+                        <select id="communeList" onChange={handleChangeCommune}>
+                            <option name="commune">Commune</option>
                             {
                                 communeList.map((item, index) => {
                                     return(
-                                        <option key={index} value={item}>{item}</option>
+                                        <option key={index} name='commune' value={item.pk}>{item.nom}</option>
                                     )
                                 })
                             }
@@ -145,10 +210,11 @@ function Profil({user , wilayas_communes}){
                         <div className="input-fieled-profil">
                         <label htmlFor="number">Numéro de téléphone</label>
                         <input id="number" 
-                               type="number"
+                               type="text"
                                placeholder=""
                                onChange={handleChange}
-                               name="phoneNumber"/>
+                               name="phoneNumber"
+                               value={formData.phoneNumber}></input>
                         </div>
                         <input type="submit" 
                                value="Modifier les informations"
@@ -160,8 +226,4 @@ function Profil({user , wilayas_communes}){
     )
 
 }
-const mapState = state => ({
-    user: state.auth.user,
-    wilayas_communes :state.auth.wilayas_communes
-})
-export default connect(mapState) (Profil);
+export default connect() (Profil)

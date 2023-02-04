@@ -96,6 +96,7 @@ export const checkAuthenticated=()=> async dispatch=>{
 /***************************************** */
 
 export const logout=()=> dispatch=>{
+  console.log("welcome in logout function")
   dispatch({
     type:LOGOUT
   })
@@ -136,11 +137,13 @@ export const load_user = () => async dispatch =>{
         }
     };
     try{
-        const res = await axios.get(`http://127.0.0.1:8000/auth/users/me/`,config);
+        const res = await axios.get(`http://127.0.0.1:8000/accounts/me/`,config);
         dispatch({
             type:LOAD_USER_SUCCESS,
             payload:res.data,
         })
+        console.log("load wilayas and communes")
+        dispatch(getListWilayasCommunes())
     }catch (err){
         dispatch({
             type:LOGIN_FAIL
@@ -173,8 +176,6 @@ export const login = (email,password) => async dispatch =>{
       });
       console.log("loading user")
       dispatch(load_user());
-      console.log("load wilayas and communes")
-      dispatch(getListWilayasCommunes())
    }catch(err){
     console.log("login fail")
     dispatch({

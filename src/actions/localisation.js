@@ -116,8 +116,6 @@ export const UpdateLocalisation = ()=> async dispatch =>{
           const res = await axios.get(`http://127.0.0.1:8000/api/localisation/dict_wilayas_communes/`,config);
           console.log(res.data)
           console.log("\n\n")
-          console.log(res.data["wilayas"][0])
-          console.log(res.data["wilayas"][0].nom)
           dispatch({
             type:LOAD_WILAYA_COMMUNES,
             payload:res.data,

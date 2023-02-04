@@ -50,6 +50,7 @@ const Login = ({signup, login , isAuthenticated})=> {
         console.log(isAuthenticated);
         console.log('hello login4');
 
+
     };
 
     const continueWithGoogleLog = async()=>{
@@ -76,6 +77,7 @@ const Login = ({signup, login , isAuthenticated})=> {
           signup(prenom,nom,email,password,re_password);
           setAccountCreated(true);
           console.log("end of signup")
+          
         } else {
             console.log("Mot de passe faux")
         }

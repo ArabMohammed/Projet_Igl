@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Navbar from '../containers/Navbar';
+import Navbar from '../Components/Navbar';
 import { connect } from 'react-redux';
 import { checkAuthenticated, load_user ,  } from '../actions/auth';
 

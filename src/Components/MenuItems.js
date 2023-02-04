@@ -14,6 +14,8 @@ export const MenuItems = [
     {
         title: "Compte",
         url: "/compte",
-        className: "nav-item-navbar"
-    }
+        className: "nav-item-navbar",
+    },
+
+
 ]
