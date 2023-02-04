@@ -10,6 +10,8 @@ function AdConsult(){
     return(
         <>
             <AdDetails
+             nom={location.state.utilNom}
+             prenom = {location.state.utilPrenom}
              titre = {location.state.titre}
              prix = {location.state.prix}
              surface= {location.state.surface}
@@ -18,11 +20,12 @@ function AdConsult(){
              src= {location.state.pk}
              description= {location.state.description}
              categorie= {location.state.categorie_immobilier}
-             type= {location.state.type_immobilier}
+             type= {location.state.type_imusermobilier}
              unite= {location.state.unite_prix}
              wilaya= {location.state.wilaya}
              commune= {location.state.commune}
              unite_prix={location.state.unite_prix}
+             id_contact={location.state.contact}
             />
             <Footer />
         </>

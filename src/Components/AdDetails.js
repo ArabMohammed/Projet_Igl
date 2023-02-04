@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router";
 import './AdDetails.css'
+import { dispatch } from "react";
+import axios from 'axios';
+import { LOGIN_FAIL } from "../actions/types";
+import { useEffect } from "react";
 
 function AdDetails(props){
+
+    const [contacts, setContacts] = useState([])
+    const getContactId=()=>async dispatch =>{
+        if(localStorage.getItem('access')){
+          console.log("user have an access to research annonce")
+          const config ={
+              headers:{
+                  'Content-Type':'application/json',
+                  'Authorization':`JWT ${localStorage.getItem('access')}`
+              }
+          };
+          const id_contact=1
+          try{
+            console.log("id contact : "+props.id_contact)
+              const res = await axios.get(`http://127.0.0.1:8000/api/contacts/${id_contact}/`,config);
+              console.log("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Ad Details")
+              console.log(res.data);
+              setContacts(JSON.parse(res.data))
+              console.log("les datas de l objet sont : " + contacts)
+          }catch (err){
+              console.log("create a new contact fail ")
+          }
+        }else{
+          dispatch({
+            type:LOGIN_FAIL
+        })
+        }
+      };
+      //              const res = await axios.get(`http://127.0.0.1:8000/api/contacts/${id_contact}/`,config);
+
+    useEffect(() => getContactId(),
+        []);
+
+
     return(
         <>
             <div className="box-container-ad-details">
@@ -41,11 +79,11 @@ function AdDetails(props){
                                 <img />
                                 <div class='contact-info-perso-ad-deatils'>
                                     <h4>Contact Agent</h4>
-                                    <p><i class="fa-thin fa-person"></i>  Janet Richmond</p>
+                                    <p><i class="fa-thin fa-person"></i>  {props.nom} {props.prenom}</p>
                                     <p><i class="fa-regular fa-phone"></i>  0559834573</p>
-                                    <p><i class="fa-brands fa-facebook"></i>  Facebook</p>
-                                    <p><i class="fa-brands fa-twitter"></i>  Instagram</p>
-                                    <p><i class="fa-brands fa-linkedin"></i>  LinkedIn</p>
+                                    <p><i class="fa-sharp fa-solid fa-location-dot"></i>  Facebook</p>
+                                    <p><i class="fa-sharp fa-solid fa-location-dot"></i>  Instagram</p>
+                                    <p><i class="fa-sharp fa-solid fa-location-dot"></i>  LinkedIn</p>
                                 </div>
                             </div>
     

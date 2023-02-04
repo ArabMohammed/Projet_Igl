@@ -163,7 +163,7 @@
 
 .list-ads-my-account {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 30%);
+    grid-template-columns: repeat(auto-fill, 23rem);
     gap: 5%;
     margin: 40px 0;
     flex-wrap: wrap;

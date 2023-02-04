@@ -23,6 +23,8 @@ function MyAccount({user}){
             {
                 state:
                     { 
+                        utilNom: user.nom,
+                        utilPrenom: user.prenom,
                         titre: item.titre,
                         prix: item.prix,
                         surface: item.surface,
@@ -98,7 +100,7 @@ function MyAccount({user}){
                         {
                                ads.map((item) => {
                                 j++;
-                                if(j>4) return;
+                                if(j>6) return;
                                 obj = {
                                     titre: item.titre,
                                     prix: item.prix,

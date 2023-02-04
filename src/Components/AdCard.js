@@ -5,15 +5,14 @@ import {AdsList} from "./AdsList";
 import { connect } from "react-redux";
 
 function AdCard(props){
-    console.log("info annonce")
-    console.log(props.src)
-    const source =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/1`;
+    console.log("Souuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuurce = " + props.src)
+    const source = `http://127.0.0.1:8000/api/annonces/${props.src}/images/1`;
     return(
         <>
         <div className="box-ad">
             <div className="image-ac">
                 <img src={source} alt="immage-immobilier" />
-                {props.isNegotiable && <p className="nego-ac">Négociable</p>}
+                <button className="nego-ac">Supprimer</button>
                 <div className="info-num-ac">
                     <p>{props.price}</p>
                     <p>{props.surface}</p>

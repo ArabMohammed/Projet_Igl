@@ -24,9 +24,16 @@
 
 .nego-ac {
     position: absolute;
-    top: 0; left: 0;
-    background-color: #CC935C;
+    top: 0; right: 0;
+    background-color: red;
     padding: 5px;
+    color: white;
+    border: red;
+    box-shadow: 2px 2px 5px gray;
+}
+
+.nego-ac:hover{
+    cursor: pointer;
 }
 
 .up-info-ac{

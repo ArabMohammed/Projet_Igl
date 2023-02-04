@@ -14,8 +14,8 @@ function Accueil ({user ,uploadScrapedAnnonces}){
     else{
       console.log("user is null")
     }
+    
     return (
-      
     <container>
 
       <section id="section01">
