@@ -7,11 +7,13 @@ import { LOGIN_FAIL } from "../actions/types";
 import { useEffect } from "react";
 
 function AdDetails(props){
-
-    const src1 =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/1`
-    const src2 =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/2`
+    const nb=Number(props.src)
+    console.log("nb ================ " + nb)
+    const src1 =  `http://127.0.0.1:8000/api/annonces/${nb}/images/1/`
+    console.log("=============================>"+src1)
+    /*const src2 =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/2`
     const src3 =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/3`
-    const src4 =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/4`
+    const src4 =  `http://127.0.0.1:8000/api/annonces/${props.src}/images/4`*/
 
     const [contacts, setContacts] = useState([])
     const getContactId=()=>async dispatch =>{
@@ -23,14 +25,14 @@ function AdDetails(props){
                   'Authorization':`JWT ${localStorage.getItem('access')}`
               }
           };
-          const id_contact=1
+          const id_contact=props.contact
           try{
-            console.log("id contact : "+props.id_contact)
+            console.log("id contact : "+props.contact)
               const res = await axios.get(`http://127.0.0.1:8000/api/contacts/${id_contact}/`,config);
-              console.log("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Ad Details")
-              console.log(res.data);
-              setContacts(JSON.parse(res.data))
-              console.log("les datas de l objet sont : " + contacts)
+              console.log("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Ad Details" + res.data)
+              setContacts(res.data)
+             // con = res.data
+              //console.log("les datas de l objet sont : " + con.adresse)
           }catch (err){
               console.log("create a new contact fail ")
           }
@@ -54,7 +56,7 @@ function AdDetails(props){
                 <p className="span2"><i class="fa-sharp fa-solid fa-location-dot"></i> {props.adresse_bien_immobilier}</p>
 
                 <div className="images-ad-details">
-                    <img src='/images/video-immobilier.jpg' alt='image-immobilier' />
+                    <img src={src1} alt='image-immobilier' />
                     <img src='/images/video-immobilier.jpg' alt='image-immobilier' />
                     <img src='/images/video-immobilier.jpg' alt='image-trois' />
                     <img src='/images/video-immobilier.jpg' alt='image-quatre' />
@@ -84,9 +86,9 @@ function AdDetails(props){
                                 <img />
                                 <div class='contact-info-perso-ad-deatils'>
                                     <h4>Contact Agent</h4>
-                                    <p><i class="fa-thin fa-person"></i>  {props.nom} {props.prenom}</p>
-                                    <p><i class="fa-regular fa-phone"></i>  0559834573</p>
-                                    <p><i class="fa-sharp fa-solid fa-location-dot"></i>  Facebook</p>
+                                    <p><i class="fa fa-person"></i>  {props.nom} {props.prenom}</p>
+                                    <p><i class="fa fa-phone"></i>  {contacts.numero_telephone}</p>
+                                    <p><i class="fa-sharp fa-solid fa-location-dot"></i>  {props.adresse_bien_immobilier}</p>
                                     <p><i class="fa-sharp fa-solid fa-location-dot"></i>  Instagram</p>
                                     <p><i class="fa-sharp fa-solid fa-location-dot"></i>  LinkedIn</p>
                                 </div>

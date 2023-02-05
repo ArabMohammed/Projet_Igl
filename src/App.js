@@ -18,7 +18,9 @@ import Activate from './pages/Activate';
 import Accueil   from './pages/Accueil';
 import store from './store'
 import {Provider} from 'react-redux'
+import AdDet from './Components/AdDet'
 import Layout from './hocs/Layout'
+import Acount from './Components/Acount';
 
 
 function App() {
@@ -41,7 +43,7 @@ function App() {
           <Route path='/compte/infopersonnelles' element={<AccountInfo />}></Route>
           <Route path='/compte/mesfavoris' element={<MyFav />} ></Route>
           <Route path='/compte/mesannonces' element={<MyAds />}></Route>
-          <Route path='/compte/mesannonces/annonce' element={<AdConsult />}></Route>
+          <Route path='/compte/mesannonces/annonce/:annonceId' element={<AdDet />}></Route>
           <Route path="/login" element={<Login />}/>
           <Route path="/signup" element={<Signup />}/>
           <Route path="/reset-password" element={<ResetPassword />}/>

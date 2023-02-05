@@ -5,7 +5,6 @@ import {AdsList} from "./AdsList";
 import { connect } from "react-redux";
 
 function AdCard(props){
-    console.log("Souuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuurce = " + props.src)
     const source = `http://127.0.0.1:8000/api/annonces/${props.src}/images/1`;
     return(
         <>

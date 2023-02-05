@@ -17,7 +17,7 @@ function AdConsult(){
              surface= {location.state.surface}
              adresse_bien_immobilier={ location.state.adresse_bien_immobilier}
              date = {location.state.date_publication}
-             src= {location.state.pk}
+             src= {location.state.src}
              description= {location.state.description}
              categorie= {location.state.categorie_immobilier}
              type= {location.state.type_imusermobilier}
@@ -25,7 +25,7 @@ function AdConsult(){
              wilaya= {location.state.wilaya}
              commune= {location.state.commune}
              unite_prix={location.state.unite_prix}
-             id_contact={location.state.contact}
+             contact={location.state.contact}
             />
             <Footer />
         </>

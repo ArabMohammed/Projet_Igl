@@ -1,0 +1,61 @@
+.house-container{
+    background: linear-gradient(to bottom right, #e89b53, transparent );
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 330px;
+    padding: 1cm;
+    display: grid;
+    grid-template-columns:  55% 45%;
+}
+.image-home-container{
+    float: right;
+}
+.image-home-container img{
+    float: right;
+    height: 285px;
+}
+.welcoming-title-container h5{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 2px;
+    padding-top: 0.4cm;
+}
+
+.welcoming-title-container p{
+    padding-top: 1cm;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 23px;
+    text-align: center;
+    
+}
+.welcoming-title-container span{
+    color: #CD6602;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.description-detaillee{
+    margin: auto;
+    width: 700px;
+    text-align: left;
+    padding: 30px;
+    line-height: 25px;
+}
+.description-detaillee p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.title-about-container{
+    border-left: #e89b53 2px solid;
+    padding-left: 15px;
+    margin-bottom: 0.5cm;
+    font-weight: bolder;
+    font-size: 16px;
+}
+.title-about-container span{
+    color: #CD6602;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.contenu{
+    font-size: 13px;
+}

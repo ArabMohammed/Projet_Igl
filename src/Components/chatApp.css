@@ -1,0 +1,111 @@
+.chatApp-container{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    width:90% ;
+    margin-left:5% ;
+    margin-right: 5%;
+}
+.discussions-active-list{
+    margin: 30px;
+}
+.discussions-active-list h4{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #CD6602;
+}
+.discussions-active-list ul{
+    list-style: none;
+}
+.list-users-actif img{
+    width:30px ;
+    height:30px ;
+    border-radius: 100%;
+}
+.list-users-actif li:active{
+    background-color: #CD6602;
+}
+.list-users-actif li{
+    padding: 10px;
+}
+.chat-part-container li:nth-child(2n){
+    float:right ;
+    background-color:#EBB683 ;
+    padding: 10px;
+    border-radius: 7px;
+}
+.chat-part-container ul{
+    list-style: none;
+}
+.chat-part-container h4{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #CD6602;
+    margin: 40px;
+    text-align: center;
+}
+
+.received-msg{
+    display: inline-block;
+    width:90%;
+    padding: 0 0 0 10;
+    vertical-align: top;
+}
+.received-msg-inbox{
+    width:57% ;
+}
+.received-msg-inbox p{
+    width:57% ;
+    background-color: white;
+    border-radius:7px ;
+    border: 1px solid #CD6602;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: black;
+    margin: 0;
+    padding: 5px 10px 5px 12px;
+}
+
+
+.hr{
+    height:2px ;
+    background-color: #CD6602;
+    margin: 15px;
+    width: 100%;
+}
+.outgoing-msg{
+    overflow: hidden;
+    margin: 26px 20px;
+}
+.outgoing-msg-inbox{
+    float: left ;
+    width: 50%;
+    margin-left: 50%;
+}
+.outgoing-msg-inbox p{
+    width:100% ;
+    background-color: #EBB683;
+    border-radius:7px ;
+    border: 1px solid #EBB683;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: black;
+    margin: 0;
+    padding: 5px 10px 5px 12px;
+}
+.send-container{
+    display: grid;
+    grid-template-columns: 95% 5%;
+}
+.send-container input{
+    border: 1px solid gray;
+    border-radius: 7px;
+    font-size:14px ;
+}
+.send-container img{
+    width:30px ;
+    height:30px ;
+}
+.send-container button{
+    background-color: #CD6602;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

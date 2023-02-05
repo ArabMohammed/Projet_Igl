@@ -1,0 +1,115 @@
+.gestion-compte-container {
+    margin: auto;
+    width: 90%;
+    text-align: justify;
+    line-height: 1cm;
+}
+.img-gesCompte-container {
+    text-align: center;
+    text-decoration: underline;
+    margin: 10px;
+}
+.img-gesCompte-container h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(233, 139, 62);
+}
+.img-gesCompte-container img{
+    width: 100px;
+    height: 100px;
+}
+.gestion-compte-container h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.gestion-compte-container p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.gestionAds-Help-container {
+    margin: auto;
+    width: 90%;
+    text-align: justify;
+    line-height: 1cm;
+}
+.img-gesAds-container {
+    text-align: center;
+    text-decoration: underline;
+    margin: 10px;
+}
+.img-gesAds-container h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(233, 139, 62);
+}
+.img-gesAds-container img{
+    width: 100px;
+    height: 100px;
+}
+.gestionAds-Help-container h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.gestionAds-Help-container li {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.gestionAds-Help-container span {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.security-part-container {
+    margin: auto;
+    width: 90%;
+    text-align: justify;
+    line-height: 1cm;
+}
+.img-Security-container {
+    text-align: center;
+    text-decoration: underline;
+    margin: 10px;
+}
+.img-Security-container h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(233, 139, 62);
+}
+.img-Security-container img{
+    width: 100px;
+    height: 100px;
+}
+.security-part-container h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.security-part-container li {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.security-part-container span {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.problem-signal-container {
+    margin: auto;
+    width: 90%;
+    text-align: justify;
+    line-height: 1cm;
+}
+.img-Problem-container {
+    text-align: center;
+    text-decoration: underline;
+    margin: 10px;
+}
+.img-Problem-container h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(233, 139, 62);
+}
+.img-Problem-container img{
+    width: 100px;
+    height: 100px;
+}
+.problem-signal-container h3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.problem-signal-container p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.lien-problem {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px;
+    color: green;
+}

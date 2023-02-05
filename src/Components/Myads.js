@@ -35,7 +35,7 @@ function Myads({user}){
                         surface: item.surface,
                         adresse_bien_immobilier: item.adresse_bien_immobilier,
                         date : item.date_publication,
-                        src: item.pk,
+                        src: item.src,
                         description: item.description,
                         categorie: item.categorie_immobilier,
                         type: item.type_immobilier,
@@ -61,8 +61,12 @@ function Myads({user}){
           try{
               console.log("welcome in annonces1") 
               const res = await axios.get(`http://127.0.0.1:8000/api/annonces/mesannonces/`,config);
+              console.log("\n\n")
+              console.log("liste des annonces  : "+res.data[0].type)
               setAds(res.data);
-              console.log("id de contact : "+ads)
+              console.log("\n\n")
+              console.log("liste des annonces  : "+res.data[0].type)
+              console.log("\n\n")
           }catch (err){
               console.log("getting annonces of user fail ")
           }
@@ -90,8 +94,7 @@ function Myads({user}){
               const id_contac=1
               try{
                   const res = await axios.get(`http://127.0.0.1:8000/api/contacts/1/`,config);
-                  console.log("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
-                  console.log("yyyyyyyyyyyyyyyyyyyyyyyyyyy: "+res.data.pk);
+        
 //                  return res.data;
               }catch (err){
                   console.log("create a new contact fail ")
@@ -139,10 +142,9 @@ function Myads({user}){
                                     unite: item.unite_prix,
                                     contact: item.contact
                                 }
-                                
+                                {console.log("contact dans myads = zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz "+ item.pk)}
                                 return(
                                     <div onClick={() => clickHandler(obj)}>
-                                        {console.log("Les info avant passage : aaaaaaaaaaaaaaaaaaaaaaaaaaa " + item.contact )}
                                         <AdCard 
                                         key={item.pk}
                                         title={item.titre}

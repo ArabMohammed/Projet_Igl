@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 
-function MyAccount({user}){
+function Acount({user}){
     const [ads, setAds] = useState([]);
     let obj = {}
     
@@ -101,40 +101,14 @@ function MyAccount({user}){
                                ads.map((item) => {
                                 j++;
                                 if(j>6) return;
-                                obj = {
-                                    titre: item.titre,
-                                    prix: item.prix,
-                                    surface: item.surface,
-                                    adresse_bien_immobilier: item.adresse_bien_immobilier,
-                                    date : item.date_publication,
-                                    src: item.pk,
-                                    description: item.description,
-                                    categorie: item.categorie_immobilier,
-                                    type: item.type_immobilier,
-                                    unite: item.unite_prix,
-                                    wilaya: item.wilaya,
-                                    commune: item.commune,
-                                    unite: item.unite_prix,
-
-                                }
+                                console.log("item.pk = " + item.pk)
+                                let source =  `/compte/mesannonces/annonce/${item.pk}`
                                 
                                 return(
-                                    <div onClick={() => clickHandler((obj))}>
-                                        {console.log("Les info avant passage : " + obj.titre )}
+                                    <Link to={source}>
                                             <AdCard 
-                                            key={item.pk}
-                                            title={item.titre}
-                                            price={item.prix}
-                                            surface={item.surface}
-                                            adress={item.adresse_bien_immobilier}
-                                            date={item.date_publication}
-                                            isNegotiable={false}
-                                            src={item.pk}
-                                            utilisateurNom={user.nom}
-                                            utilisateurPrenom={user.prenom}
-
                                         />
-                                     </div>
+                                     </Link>
                                 )
                                })
                             }
@@ -151,5 +125,7 @@ function MyAccount({user}){
 const mapState = state => ({
     user: state.auth.user
   })
-export default connect(mapState) (MyAccount)
+
+export default connect(mapState) (Acount)
+
 

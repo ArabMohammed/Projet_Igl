@@ -44,19 +44,19 @@ const Login = ({signup, login , isAuthenticated})=> {
     });*/
     
     /* login methods */
-    // const onSubmitLog = e =>{
-    //     console.log('hello login');
-    //     e.preventDefault();
-    //     console.log('hello login2');
+     const onSubmitLog = e =>{
+         console.log('hello login');
+         e.preventDefault();
+         console.log('hello login2');
 
-    //     login(email_log,password_log);
-    //     console.log('hello login3');
+         login(email_log,password_log);
+         console.log('hello login3');
 
-    //     console.log(isAuthenticated);
-    //     console.log('hello login4');
+         console.log(isAuthenticated);
+         console.log('hello login4');
 
 
-    // };
+     };
 
     const continueWithGoogleLog = async()=>{
         try{
@@ -164,7 +164,7 @@ const Login = ({signup, login , isAuthenticated})=> {
 
       {!bool &&
       <section id="login_signin">
-        <form /*onSubmit={onSubmitLog}*/>
+        <form onSubmit={onSubmitLog}>
       <input type="text" placeholder="Nom d'utilisateur" name="email_log" onChange={onChange1}/>
       <input type="password" placeholder="Mot de passe" name="password_log" onChange={onChange1}/>
       <div id="did">

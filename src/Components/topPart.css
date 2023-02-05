@@ -1,0 +1,36 @@
+.topPart-container{
+    width: 90%;
+    margin: auto;
+    background-image: url('../images/background.jpg') ;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 260px ;
+    text-align: center;
+}
+.img-topPart-container{
+    float: right;
+}
+.img-topPart-container img{
+    float: right;
+    height: 250px;
+    width: 420px;
+}
+.topPart-title-container{
+    padding: 15px;
+    height: 100px;
+    width: 400px ;
+    background-color: rgba(0, 0, 0, 0.67) ;
+    margin-left:30px ;
+}
+.topPart-title-container h3{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: #EBB683;
+}
+.topPart-title-container h6{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: white;
+    line-height: 1cm;
+    letter-spacing: 0.7px;
+}

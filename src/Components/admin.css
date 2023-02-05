@@ -1,0 +1,80 @@
+.Admin-section-container{
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 25% 70%;
+}
+.Admin-section-container h3{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #d48a45;
+}
+.list-sidebar{
+    list-style-type: none;
+}
+.section-profil{
+    padding-bottom: 15px;
+    color: white;
+    letter-spacing: 2px;
+}
+.sidebar-container{
+    height: 100%;
+    width:250px ;
+    background-color:#CC935C;
+    padding-top: 10px;
+    text-align: center;
+}
+.img-identity{
+    width:60px ;
+    height: 60px;
+    border-radius: 100%;
+    border:1px solid white ;
+}
+.list-sidebar li{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid white;
+}
+.list-sidebar li:hover{
+    background-color: white;
+    color: #d48a45;
+}
+.info-admin-container{
+    text-align: center;
+}
+.stat-list{
+    list-style: none;
+    display: inline;
+}
+.stat-list li {
+    display: inline-block;
+    padding: 25px;
+    text-align: center;
+    border: 2px solid #d48a45;
+    border-radius: 50%;
+    margin: 20px;
+}
+.stat-list li h5{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.stat-list li img{
+    width: 30px;
+    height: 30px;
+}
+.btn-admin-container input{
+    border: 1px solid #d48a45;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+.btn-admin-container button{
+    padding: 7px;
+    color: white;
+    background-color: #CC935C;
+    cursor: pointer;
+}
