@@ -34,7 +34,7 @@ function Navbar({logout, isAuthentificated}){
         <>
         <nav class="navbar-navbar">
             <div class="navbar-logo-navbar">
-                <img src="" alt="Logo-image"></img>
+                <img src="images/logo.png" alt="Logo-image"></img>
             </div>
             <div>
                 <i className = {showed ? "fas fa-times" : "fas fa-bars"} onClick={handleClick}></i>

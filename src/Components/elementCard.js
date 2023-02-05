@@ -27,4 +27,5 @@ function ElementCard(props){
     ) 
 }
 
-export default ElementCard;
+// export default ElementCard;
+module.exports=ElementCard;

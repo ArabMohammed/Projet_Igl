@@ -1,25 +1,20 @@
-import React, { useEffect } from "react";
-import './Myads.css';
-import './AccountHead'
-import { useState } from "react";
+import React from "react";
+import "./MyAccount.css"
 import { Link } from "react-router-dom";
-import { AdsList } from "./AdsList";
 import AdCard from "./AdCard";
-import{ getAnnonceDetail, createAnnonce} from '../actions/annonces';
-import {getUserContacts} from '../actions/contacts'
-import { dispatch } from "react";
-import axios from 'axios';
-import { connect } from "react-redux";
-import {
-    LOGIN_FAIL,
-  }from '../actions/types'
+import { LOGIN_FAIL } from "../actions/types";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
+import { connect } from "react-redux";
 
-function Myads({user}){
-    const [contacts, setContacts] = useState([]);
-    const [ads, setAds] = useState([]);
+function Acount({user}){
+     const [ads, setAds] = useState([]);
     let obj = {}
-
+    
+    
+    let i = 0, j = 0;
     const navigate = useNavigate();
     function clickHandler(item){
         console.log("state dans use navigate : ", item);
@@ -42,11 +37,11 @@ function Myads({user}){
                         unite: item.unite_prix,
                         wilaya: item.wilaya,
                         commune: item.commune,
-                        contact: item.contact
                     }
             }
         )
     }
+
    
       const getUserAnnonces = ()=> async dispatch =>{
         console.log("welcome in annonces")
@@ -61,12 +56,9 @@ function Myads({user}){
           try{
               console.log("welcome in annonces1") 
               const res = await axios.get(`http://127.0.0.1:8000/api/annonces/mesannonces/`,config);
-              console.log("\n\n")
-              console.log("liste des annonces  : "+res.data[0].type)
+              console.log(res.data);
               setAds(res.data);
-              console.log("\n\n")
-              console.log("liste des annonces  : "+res.data[0].type)
-              console.log("\n\n")
+              console.log(res);
           }catch (err){
               console.log("getting annonces of user fail ")
           }
@@ -82,95 +74,68 @@ function Myads({user}){
         []);
 
 
-    const getContactId=()=>async dispatch =>{
-            if(localStorage.getItem('access')){
-              console.log("user have an access to research annonce")
-              const config ={
-                  headers:{
-                      'Content-Type':'application/json',
-                      'Authorization':`JWT ${localStorage.getItem('access')}`
-                  }
-              };
-              const id_contac=1
-              try{
-                  const res = await axios.get(`http://127.0.0.1:8000/api/contacts/1/`,config);
-        
-//                  return res.data;
-              }catch (err){
-                  console.log("create a new contact fail ")
-              }
-            }else{
-              dispatch({
-                type:LOGIN_FAIL
-            })
-            }
-          };
-          
-        useEffect(() => getContactId(),
-            []);
-    
 
-    return (
+    return(
         <>
-
-        <div className="container-my-ads">
-            <div className="top-my-ads">
-                <div className="top-title-my-ads">
-                    <h1>Mon Compte</h1>
-                    <h2>Mes annonces</h2>
+            <div className="container-my-account">
+                <div className="top-my-account">
+                    <div className="top-title-my-account">
+                        <h1>Mon Compte</h1>
+                        <h2>Mon profil</h2>
+                    </div>
                 </div>
-            </div>
-            
-            <div className="ads-div-my-ads">
-                    <h2><sapn>Mes</sapn> annonces</h2>
-                    <div className="list-ads-my-ads">
-                    {
+                <div className="center-my-account">
+                    <div className="photo-my-account">
+                        <img src="/images/user-solid.svg" alt="perso-image" />
+                        <p>Bienvenue dans votre espace utilisateur</p>
+                    </div>
+                    <div className="switch-my-account">
+                        <Link to="/compte/infopersonnelles" className="link1"><p><i class="fa-sharp fa-solid fa-gear"></i> Modifier mes informations personnelles</p></Link>
+                        <Link to="" className="link2"><p><i class="fa-solid fa-message"></i> Consulter mes dicussions</p></Link>
+                    </div>
+                </div>
+                <div className="bottom-my-account">
+                    <div className="ads-div-my-account">
+                        <h2><sapn>Mes</sapn> annonces</h2>
+                        <div className="list-ads-my-account">
+                        {
                                ads.map((item) => {
-                                obj = {
-                                    titre: item.titre,
-                                    prix: item.prix,
-                                    surface: item.surface,
-                                    adresse_bien_immobilier: item.adresse_bien_immobilier,
-                                    date : item.date_publication,
-                                    src: item.pk,
-                                    description: item.description,
-                                    categorie: item.categorie_immobilier,
-                                    type: item.type_immobilier,
-                                    unite: item.unite_prix,
-                                    wilaya: item.wilaya,
-                                    commune: item.commune,
-                                    unite: item.unite_prix,
-                                    contact: item.contact
-                                }
-                                {console.log("contact dans myads = zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz "+ item.pk)}
+                                j++;
+                                console.log("item.pk = " + item.pk)
+                                let source =  `/compte/mesannonces/annonce/${item.pk}`
+                                
                                 return(
-                                    <div onClick={() => clickHandler(obj)}>
-                                        <AdCard 
-                                        key={item.pk}
-                                        title={item.titre}
-                                        price={item.prix}
-                                        surface={item.surface}
-                                        adress={item.adresse_bien_immobilier}
-                                        date={item.date_publication}
-                                        isNegotiable={false}
-                                        src={item.pk}
-                                        utilisateurNom={user.nom}
-                                        utilisateurPrenom={user.prenom}
+                                    <Link to={source} state={{ads}}>
+                                            <AdCard 
+                                             key={item.pk}
+                                             title={item.titre}
+                                             price={item.prix}
+                                             surface={item.surface}
+                                             adress={item.adresse_bien_immobilier}
+                                             date={item.date_publication}
+                                             isNegotiable={false}
+                                             src={item.pk}
+                                             utilisateurNom={user.nom}
+                                             utilisateurPrenom={user.prenom}
                                         />
-                                     </div>
+                                     </Link>
                                 )
                                })
                             }
+                        </div>
+                        <Link to="/compte/mesannonces"><button className="see-all-ads">Voir tous</button></Link>
                     </div>
+                </div>
             </div>
-        </div>
-    </>
-    )
+        </>
 
+    )
 }
 
 const mapState = state => ({
     user: state.auth.user
-})
+  })
 
-export default connect(mapState) (Myads);
+export default connect(mapState) (Acount)
+
+

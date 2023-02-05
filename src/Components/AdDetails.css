@@ -41,6 +41,7 @@ hr {
 
 .images-ad-details img{
     height: 20rem;
+    width: 30rem;
     border: #CD6602 2px solid;
     padding: 1rem;
 }

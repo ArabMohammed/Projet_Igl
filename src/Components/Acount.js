@@ -1,7 +1,6 @@
 import React from "react";
 import "./MyAccount.css"
 import { Link } from "react-router-dom";
-import { AdsList } from "./AdsList";
 import AdCard from "./AdCard";
 import { LOGIN_FAIL } from "../actions/types";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +10,9 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 
 function Acount({user}){
-    const [ads, setAds] = useState([]);
+     const [ads, setAds] = useState([]);
     let obj = {}
+    
     
     let i = 0, j = 0;
     const navigate = useNavigate();
@@ -74,6 +74,7 @@ function Acount({user}){
         []);
 
 
+
     return(
         <>
             <div className="container-my-account">
@@ -105,8 +106,18 @@ function Acount({user}){
                                 let source =  `/compte/mesannonces/annonce/${item.pk}`
                                 
                                 return(
-                                    <Link to={source}>
+                                    <Link to={source} state={{ads}}>
                                             <AdCard 
+                                             key={item.pk}
+                                             title={item.titre}
+                                             price={item.prix}
+                                             surface={item.surface}
+                                             adress={item.adresse_bien_immobilier}
+                                             date={item.date_publication}
+                                             isNegotiable={false}
+                                             src={item.pk}
+                                             utilisateurNom={user.nom}
+                                             utilisateurPrenom={user.prenom}
                                         />
                                      </Link>
                                 )

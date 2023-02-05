@@ -6,14 +6,15 @@ import axios from 'axios';
 import { LOGIN_FAIL } from "../actions/types";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { useFetcher } from "react-router-dom";
 
 function AdDet({user}){
+
+    const location = useLocation()
+    console.log("location + " , location.state)
 
     const [ads, setAds] = useState([])
 
     const { annonceId } = useParams()
-    let annonce
   
     
     const src1 =  `http://127.0.0.1:8000/api/annonces/${annonceId}/images/1/`
@@ -21,52 +22,17 @@ function AdDet({user}){
     const src3 =  `http://127.0.0.1:8000/api/annonces/${annonceId}/images/3/`
     const src4 =  `http://127.0.0.1:8000/api/annonces/${annonceId}/images/4/`
     
-    const getUserAnnonces = ()=> async dispatch =>{
-        console.log("welcome in annonces")
-        if(localStorage.getItem('access')){
-          console.log("user have an access")
-          const config ={
-              headers:{
-                  'Content-Type':'application/json',
-                  'Authorization':`JWT ${localStorage.getItem('access')}`
-              }
-          };
-          try{
-              console.log("welcome in annonces1") 
-              const res = await axios.get(`http://127.0.0.1:8000/api/annonces/mesannonces/`,config);
-              console.log(res.data);
-              setAds(res.data);
-              console.log(res);          
-          }catch (err){
-              console.log("getting annonces of user fail ")
-          }
-        }else{
-          dispatch({
-            type:LOGIN_FAIL
-        })
-        }  
-      };
-
-
-    useEffect(()=>{
-        getUserAnnonces()
-         annonce = ads.find((annonce) => {
-            return annonce.pk === parseInt(annonceId)
-        }
-        )
-    }
-        , [getUserAnnonces])
-        
-        
-        /*useEffect(async () => {
-   await getData();
-},[]);*/
     
+        const annonce = location.state.ads.find((annonce) => {
+            return annonce.pk === parseInt(annonceId)
+        })
+        
 
 
-    const [contacts, setContacts] = useState([])
-    /*const getContactId=()=>async dispatch =>{
-        console.log('useeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee = ' + adId)
+    const [contacts, setContacts] = useState({})
+
+    const getContactId=()=>async dispatch =>{
+        
         if(localStorage.getItem('access')){
           console.log("user have an access to research annonce")
           const config ={
@@ -75,11 +41,14 @@ function AdDet({user}){
                   'Authorization':`JWT ${localStorage.getItem('access')}`
               }
           };
-          const id_contact=1
+          const id_contact=annonce.pk
           try{
               const res = await axios.get(`http://127.0.0.1:8000/api/contacts/${id_contact}/`,config);
-              console.log("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Ad Details" + res.data)
+              console.log("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC Ad Details")
+              console.log(annonce.pk)
+              console.log(res.data)
               setContacts(res.data)
+              console.log(contacts)
              // con = res.data
               //console.log("les datas de l objet sont : " + con.adresse)
           }catch (err){
@@ -93,22 +62,16 @@ function AdDet({user}){
       };
 
     useEffect(() => getContactId(),
-        []);*/
+        []);
 
-        /*annonce = ads.find((annonce) => {
-            return annonce.pk === parseInt(annonceId)
-          }
-            )
-        console.log("annonce = ")
-        console.log(annonce)*/
-
+      
 
     return(
         <>
             <div className="box-container-ad-details">
                 <h2>{annonce.titre}</h2>
-                <p className="span">Prix:  </p>
-                <p className="span2"><i class="fa-sharp fa-solid fa-location-dot"></i>annonce.adresse_bien_immobilier</p>
+                <p className="span">Prix: {annonce.prix} </p>
+                <p className="span2"><i class="fa-sharp fa-solid fa-location-dot"></i>{annonce.adresse_bien_immobilier}</p>
 
                 <div className="images-ad-details">
                     <img src={src1} alt="pas d' image 1" />
@@ -121,15 +84,14 @@ function AdDet({user}){
                         <div className="description-ad-details">
                             <h3>Description</h3>
                             <hr />
-                            <p>annonce.description</p>
+                            <p>{annonce.description}</p>
                         </div>
                         <div className="bref-resume-ad-details">
                             <h3>Résumé</h3>
                             <hr />
-                            <p>Catégorie: annonce.categorie </p> <br />
-                            <p>Type du bien: annonce.type </p> <br />
-                            <p>Nombre de pièces: annonce.type </p> <br />
-                            <p>Surface: annonce.surface</p> <br />
+                            <p>Catégorie: {annonce.categorie} </p> <br />
+                            <p>Type du bien: {annonce.type} </p> <br />
+                            <p>Surface: {annonce.surface}</p> <br />
                         </div>
                     </div>
 
@@ -142,10 +104,10 @@ function AdDet({user}){
                                 <div class='contact-info-perso-ad-deatils'>
                                     <h4>Contact Agent</h4>
                                     <p><i class="fa fa-person"></i> {user.nom} {user.prenom}</p>
-                                    <p><i class="fa fa-phone"></i>   </p>
-                                    <p><i class="fa-sharp fa-solid fa-location-dot"></i> annonce.adresse_bien_immobilier </p>
-                                    <p><i class="fa-sharp fa-solid fa-location-dot"></i>  Instagram</p>
-                                    <p><i class="fa-sharp fa-solid fa-location-dot"></i>  LinkedIn</p>
+                                    <p><i class="fa fa-phone"></i> {contacts.numero_telephone}  </p>
+                                    <p><i class="fa-sharp fa-solid fa-location-dot"></i> {annonce.adresse_bien_immobilier} </p>
+                                    <p><i class="fa fa-envelope"></i> {contacts.email}</p>
+                                    <p><i class="fa-sharp fa-solid fa-location-dot"></i>  {contacts.commune} + {contacts.wilaya}</p>
                                 </div>
                             </div>
     

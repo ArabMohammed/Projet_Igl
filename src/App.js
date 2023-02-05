@@ -7,8 +7,6 @@ import Account from './pages/Account';
 import { Route, Routes ,BrowserRouter  } from 'react-router-dom';
 import AccountInfo from './pages/AccountInfo';
 import MyAds from './pages/MyAds';
-import MyFav from './pages/MyFav';
-import AdConsult from './pages/AdConsult';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ResetPassword from './pages/ResetPassword';
@@ -41,7 +39,6 @@ function App() {
           <Route path='/aide' element={<About />} />
           <Route path='/compte' element={<Account />} />
           <Route path='/compte/infopersonnelles' element={<AccountInfo />}></Route>
-          <Route path='/compte/mesfavoris' element={<MyFav />} ></Route>
           <Route path='/compte/mesannonces' element={<MyAds />}></Route>
           <Route path='/compte/mesannonces/annonce/:annonceId' element={<AdDet />}></Route>
           <Route path="/login" element={<Login />}/>
