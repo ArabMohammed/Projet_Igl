@@ -1,0 +1,23 @@
+import Aide from './pages/Aide';
+import GestionCompte from './Components/gestionCompte';
+import AdminSection from './Components/admin';
+import GestionAds from './Components/gestionAds';
+import Securite from './Components/securite';
+import SignalerProblem from './Components/signalerProblem';
+import ChatApp from './Components/chatApp';
+import ErrorPage from './pages/Errorpage';
+import Home from './pages/Home';
+import About from './pages/About';
+
+
+
+
+         <Route path='/About' element={<About />} />
+          <Route path='/aide/confiance et securite' element={<Securite/>}/>
+          <Route path='/aide/problem' element={<SignalerProblem/>}/>
+          <Route path='/Compte/Admin' element={<AdminSection/>}/>
+          <Route path='/Compte/mes_messages' element={<ChatApp/>}/>
+          <Route path='/error' element={<ErrorPage/>}/>
+          <Route path='/aide' element={<Aide/>}></Route>
+          <Route path='/aide/gestion des comptes' element={<GestionCompte/>} />
+          <Route path='/aide/gestion des annonces' element={<GestionAds/>}/>

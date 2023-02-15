@@ -10,12 +10,4 @@ export const MenuItems = [
         url: "/aide",
         className: "nav-item-navbar"
     },
-
-    {
-        title: "Compte",
-        url: "/compte",
-        className: "nav-item-navbar",
-    },
-
-
 ]

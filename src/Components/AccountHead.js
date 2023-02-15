@@ -17,7 +17,7 @@ function AccountHead(props){
     
 
     return( 
-        <div className="container-ah">
+        <div className="container-ah" data-testid="accountHead">
             <div className="profil-ah">
                 <Link to="/account"><img src='/images/user-solid.svg' alt="user-profil"></img></Link>
             </div>

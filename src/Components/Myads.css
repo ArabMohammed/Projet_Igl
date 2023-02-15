@@ -23,6 +23,10 @@
     padding: .3rem 1.4rem;
 }
 
+.up-info-ac {
+    color: #000;
+}
+
 .top-title-my-ads h2{
     color: #fff;
     padding: .3rem 1.4rem;
@@ -59,8 +63,7 @@
 .list-ads-my-ads {
     display: grid;
     grid-template-columns: repeat(auto-fill, 23rem);
-    gap: 5%;
+    gap: 3rem;
     margin: 40px 0px;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: wrap;    justify-content: center;
 }

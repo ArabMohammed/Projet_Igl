@@ -7,8 +7,6 @@ import {load_user} from '../actions/auth'
 
 function Profil({updateProfile,load_user}){
     const user=JSON.parse(localStorage.getItem('user'))
-    //console.log("welcome user")
-    //console.log(user)
     const [formData, setFormData] = useState({
         firstName:user.prenom,
         lastName:user.nom,
@@ -23,18 +21,16 @@ function Profil({updateProfile,load_user}){
     })
 
     const[value, setValue]= useState(user.wilaya)
+
     console.log("welcome now")
     console.log(user.wilaya)
     console.log(user.email)
     console.log(user.commune)
-    //setValue(formData.wilaya)
-    //console.log("value du debut" + formData.firstName)
 
     const wilayaList = []
     const communeList = []
 
     const wilayas_communes=JSON.parse(localStorage.getItem('wilayas_communes'))
-    //console.log("list wilaya communes : "+wilayas_communes)
    
     const wilayas=wilayas_communes["wilayas"]
     const communes = wilayas_communes["communes"]
@@ -56,12 +52,9 @@ function Profil({updateProfile,load_user}){
             communeActuel=communes[i].nom
         }
     }
-    /*console.log("wilaya list :")
-    console.log(wilayaList)*/
 
 
     function handleChange(event){
-       // console.log(event.target.value)
         setFormData((prevData) => {
             return {...prevData, 
                 [event.target.name] : [event.target.value]
@@ -69,10 +62,6 @@ function Profil({updateProfile,load_user}){
         })
         console.log('value de fromdata 1  = ' + formData.phoneNumber)
     }
-
-    /*const handleChange = e => setFormData({
-        ...formData, [e.target.name] : [e.target.value]
-    })*/
 
     
     function handleChangeWilaya(event){
@@ -171,25 +160,18 @@ function Profil({updateProfile,load_user}){
                                         value={formData.firstName}/>
                                 </div>
                                 <div className="input-fieled-profil">
-                                    <label htmlFor="userName">Nom d'utilisateur</label>
-                                    <input id="userName"
-                                        type="text"
-                                        placeholder=""
-                                        onChange={handleChange}
-                                        name="userName"/>
-                                </div>
-                            </div>
-                        </div>
-
-                        
-                        <div className="input-fieled-profil">
                             <label htmlFor="email">Email</label>
                             <input id="email"
                                    type="email" placeholder=""
                                    onChange={handleChange}
                                    name="email"
                                    value={formData.email}/>
+                            </div>
+                            </div>
                         </div>
+
+                        
+                       
                         <div className="input-fieled-profil">
                             <label htmlFor="password">Mot de passe</label>
                             <input id="password"

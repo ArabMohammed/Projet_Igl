@@ -25,3 +25,7 @@ html::-webkit-scrollbar-thumb{
     background: #CC935C;
     border-radius: .5rem;
 }
+
+body{
+    margin-top: 5.2rem;
+}

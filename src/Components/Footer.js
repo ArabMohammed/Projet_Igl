@@ -4,7 +4,7 @@ import './Footer.css'
 
 function Footer(){
     return(
-        <div className="footer-footer">
+        <div className="footer-footer" data-testid="accountHead.js">
             <div className="up-div-footer">
                 <div className="up-div-left-footer">
                     <span>DzAds</span>

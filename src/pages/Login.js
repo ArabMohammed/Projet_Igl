@@ -5,6 +5,7 @@ import {login} from '../actions/auth'
 import axios from 'axios';
 import {signup} from '../actions/auth'
 import './CssFile/login.css';
+import Footer from "../Components/Footer"
 const Login = ({signup, login , isAuthenticated})=> {
   /*let userInput =document1.querySelector('[name=email_log]');
   let passWordInput =document1.querySelector('[name=password_log]');
@@ -31,17 +32,6 @@ const Login = ({signup, login , isAuthenticated})=> {
     const {email_log, password_log} = formDataLog;
 
     const {prenom,nom,email,password,re_password}=formDataSign;
-    
-    /*const [formData,setFormData]=useState({
-        email : '',
-        password: '' 
-    })
-
-    const {email,password}=formData;
-    
-    const onChange = e => setFormData({
-         ...formData,[e.target.name]:e.target.value
-    });*/
     
     /* login methods */
      const onSubmitLog = e =>{
@@ -146,7 +136,7 @@ const Login = ({signup, login , isAuthenticated})=> {
           S'inscrire
         </button>
         <button id="inscrire" onClick={update2}>
-          Se coneecter
+          Se connecter
         </button>
       </div>
       {bool &&
@@ -154,10 +144,9 @@ const Login = ({signup, login , isAuthenticated})=> {
         <form onSubmit={onSubmitSign}>
           <input type="text" placeholder="Nom"  name="nom" onChange={onChange}/>
           <input type="text" placeholder="Prénom"  name="prenom" onChange={onChange}/>
-          <input type="text" placeholder="Nom d'utilisateur" name="nomUtilisateur" onChange={onChange}/>
-          <input type="email" placeholder="Adresse Email" name="email" onChange={onChange} />
-          <input type="password" placeholder="Mot de passe"  name="password" onChange={onChange}/>
-          <input type="password" placeholder="Confirmer le mot de passe" name="re_password" onChange={onChange}/>
+          <input type="email" placeholder="Adresse Email" name="email" onChange={onChange} className="email-login" />
+          <input type="password" placeholder="Mot de passe"  name="password" onChange={onChange} className="email-login"/>
+          <input type="password" placeholder="Confirmer le mot de passe" name="re_password" onChange={onChange} className="email-login"/>
           <input type="submit" value="S'inscrire" id="validate" onSubmit={e => onSubmitSign(e)}/>
         </form>
       </section>}
@@ -165,8 +154,8 @@ const Login = ({signup, login , isAuthenticated})=> {
       {!bool &&
       <section id="login_signin">
         <form onSubmit={onSubmitLog}>
-      <input type="text" placeholder="Nom d'utilisateur" name="email_log" onChange={onChange1}/>
-      <input type="password" placeholder="Mot de passe" name="password_log" onChange={onChange1}/>
+      <input type="text" placeholder="Nom d'utilisateur" name="email_log" onChange={onChange1} className="email-login"/>
+      <input type="password" placeholder="Mot de passe" name="password_log" onChange={onChange1} className="email-login"/>
       <div id="did">
         <span> <input type="checkbox" /><label>Rappelez-moi</label></span>
         <a href="">Mot de passe oublié</a>
@@ -175,42 +164,12 @@ const Login = ({signup, login , isAuthenticated})=> {
     </form>
       </section>}
 
+      <Footer />
+
     </div>
   );
     
-    /*return (
-    <div className="container mt-5">
-        <h1>Sign In</h1>
-        <p>Sign into your account</p>
-        <form onSubmit={e=>onSubmit(e)}>
-            <div className="form-group">
-               <input className="form-control" type="email"
-               placeholder="email" name="email" value={email}
-               onChange={e => onChange(e)}
-               required
-               />
-            </div>
-            <div className="form-group">
-               <input className="form-control" type="password"
-               placeholder="password" name="password" value={password}
-               onChange={e => onChange(e)}
-               required
-               minLength={8}
-               />
-            </div>
-            <button className="btn btn-primary" type="submit">Login</button>
-        </form>
-        <button className="btn btn-danger mt-3"onClick={continueWithGoogle}>
-            Continue With Google
-        </button>
-        <p className="mt-3">
-            Don't have an account ? <Link to="/signup">Signup</Link>
-        </p>
-        <p className="mt-3">
-            Forget your password ? <Link to="/reset-password">Reset password</Link>
-        </p>
-    </div>
-    )*/
+    
 }
 const mapStateToProps = state =>({
     isAuthenticated : state.auth.isAuthenticated

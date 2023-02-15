@@ -1,5 +1,5 @@
 import React from "react";
-import "./MyAccount.css"
+import "./Acount.css"
 import { Link } from "react-router-dom";
 import AdCard from "./AdCard";
 import { LOGIN_FAIL } from "../actions/types";
@@ -14,34 +14,9 @@ function Acount({user}){
     let obj = {}
     
     
-    let i = 0, j = 0;
+    let j = 0;
     const navigate = useNavigate();
-    function clickHandler(item){
-        console.log("state dans use navigate : ", item);
-        navigate(
-            '/compte/mesannonces/annonce',
-            {
-                state:
-                    { 
-                        utilNom: user.nom,
-                        utilPrenom: user.prenom,
-                        titre: item.titre,
-                        prix: item.prix,
-                        surface: item.surface,
-                        adresse_bien_immobilier: item.adresse_bien_immobilier,
-                        date : item.date_publication,
-                        src: item.src,
-                        description: item.description,
-                        categorie: item.categorie_immobilier,
-                        type: item.type_immobilier,
-                        unite: item.unite_prix,
-                        wilaya: item.wilaya,
-                        commune: item.commune,
-                    }
-            }
-        )
-    }
-
+    
    
       const getUserAnnonces = ()=> async dispatch =>{
         console.log("welcome in annonces")
@@ -91,7 +66,7 @@ function Acount({user}){
                     </div>
                     <div className="switch-my-account">
                         <Link to="/compte/infopersonnelles" className="link1"><p><i class="fa-sharp fa-solid fa-gear"></i> Modifier mes informations personnelles</p></Link>
-                        <Link to="" className="link2"><p><i class="fa-solid fa-message"></i> Consulter mes dicussions</p></Link>
+                        <Link to="/compte/mes_messages" className="link2"><p><i class="fa-solid fa-message"></i> Consulter mes dicussions</p></Link>
                     </div>
                 </div>
                 <div className="bottom-my-account">
@@ -111,6 +86,7 @@ function Acount({user}){
                                              key={item.pk}
                                              title={item.titre}
                                              price={item.prix}
+                                             unite_prix={item.unite_prix}
                                              surface={item.surface}
                                              adress={item.adresse_bien_immobilier}
                                              date={item.date_publication}
@@ -118,6 +94,7 @@ function Acount({user}){
                                              src={item.pk}
                                              utilisateurNom={user.nom}
                                              utilisateurPrenom={user.prenom}
+                                             isDeleted={false}
                                         />
                                      </Link>
                                 )

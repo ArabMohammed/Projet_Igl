@@ -1,0 +1,49 @@
+.error-page-container::before{
+    content: "";
+    /*background-image: url('../images/404-error.jpg');*/
+    background-size: cover;
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.2;
+}
+.error-page-container{
+    position: relative;
+    height: 100vh;
+    width: 90%;
+    margin:auto ;
+    text-align: center;
+    padding: 20px;
+}
+.title-container {
+    padding-top: 4cm;
+}
+.title-container p{
+    color: black;
+    font-size: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.paragraph-container{
+    padding-top: 20px;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+.paragraph-container p{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+}
+.link-container{
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 30px;
+}
+.link-container p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+
+}
